@@ -1,0 +1,1 @@
+[Tree shaking lodash with Vite](https://blog.battlefy.com/tree-shaking-lodash-with-vite)
