@@ -32,6 +32,7 @@
     - [模块](js/模块.md)
     - [数组](js/数组.md)
     - [微信](js/微信.md)
+- [地平线项目总结](地平线项目总结.md)
 - [HDLPlayer](HDLPlayer.md)
 - [Outline](Outline.md)
 - [puerts](puerts.md)
