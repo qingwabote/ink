@@ -1,16 +1,16 @@
 - 3D 数学
-    - [3D旋转](3D数学/3D旋转.md)
-    - [向量与矩阵](3D数学/向量与矩阵.md)
+    - [3D旋转](math/rotation.md)
+    - [变换](math/transform.md)
 - 光照
-    - [反射方程](光照/反射方程.md)
-    - [光照](光照/光照.md)
-    - [阴影](光照/阴影.md)
-- 图形API
-    - [渲染管线](图形API/渲染管线.md)
-    - [gamma correction](图形API/gamma%20correction.md)
-    - [opengl](图形API/opengl.md)
-    - [vertex](图形API/vertex.md)
-    - [vulkan](图形API/vulkan.md)
+    - [反射方程](lighting/equation.md)
+    - [光照](lighting/光照.md)
+    - [阴影](lighting/阴影.md)
+- graphics
+    - [渲染管线](graphics/pipeline.md)
+    - [伽马校正](graphics/gamma.md)
+    - [opengl](graphics/opengl.md)
+    - [vertex](graphics/vertex.md)
+    - [vulkan](graphics/vulkan.md)
 - 引擎优化
     - [反走样](引擎优化/反走样.md)
     - [合批](引擎优化/合批.md)

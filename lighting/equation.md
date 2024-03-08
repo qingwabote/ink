@@ -4,7 +4,7 @@ L_r(p, \omega_r) = \int_{\Omega^+} f_r(p, \omega_r, \omega_i) L_i(p, \omega_i)(n
 \hspace{100cm}
 $$
 *$f_r$: BRDF*  
-*$L$: 辐射率 (Radiance)。反射方程是个递归方程，最终会递归到计算光源的 $L$，我猜游戏引擎中用光源的 RGB $LitColor$ 表示它的辐照度 (Irradiance)，那么光源在点 $p$ 的 $L_o = LitColor (n·\omega)$。可以看出如果光源垂直照射表面时辐射率最大，$n·\omega = 1$。
+*$L$: 辐射率 (Radiance)。反射方程是个递归方程，最终会递归到计算光源的 $L$，我猜游戏引擎中用光源的 RGB $LitColor$ 表示它的辐照度 (Irradiance)，那么光源在点 $p$ 的 $L_o = LitColor (n·\omega)$。可以看出如果光源垂直照射表面时辐射率最大，$n·\omega = 1$。*
 
 [由于渲染方程和反射率方程都没有解析解，我们将会用离散的方法来求得这个积分的数值解](https://learnopengl-cn.github.io/07%20PBR/01%20Theory/)：
 ```c
