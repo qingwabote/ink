@@ -25,7 +25,7 @@
     - [swig](cpp/swig.md)
 - js
     - v8
-        - [embed v8](js/v8/embed%20v8.md)
+        - [embedding](js/v8/embedding.md)
         - [eventloop](js/v8/eventloop.md)
     - [闭包](js/闭包.md)
     - [对象](js/对象.md)
