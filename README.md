@@ -1,2 +1,1 @@
-- The palest ink is better than the best memory
-- There is no tech that can not get outdated
+https://qingwabote.github.io/ink
