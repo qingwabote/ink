@@ -9,8 +9,9 @@ swig 并不维护其生成的 JS 对象。可以创建 map 将 JS 对象与原�
 在 JS 端创建一个原生对象 A 和与之绑定的 JS 对象，然后赋值给另一个原生对象 B 作为属性，当你从 B 的此属性取回 A 时，即便我们使用 map 做了关联，一旦最初的那个 JS 对象被 GC，我们仍然得创建一个新 JS 对象用于返回。所以，要注意，你取的和存的可能不是同一个 JS 对象。
 
 ### 不支持 callback
+可以使用 [Typemaps](https://www.swig.org/Doc4.1/Typemaps.html#Typemaps) 自己实现
 
 ### 对智能指针的支持并不完整
-官方提供了 std_unique_ptr.i, 但没有 std_shared_ptr.i
+官方提供了 std_unique_ptr.i, 但没有 std_shared_ptr.i, 我在 Zero 引擎中给出了一种[实现方案](https://github.com/qingwabote/zero/blob/master/native/main/swig/Lib/javascript/v8/std_shared_ptr.i)
 
 ### 目前不支持嵌套类
