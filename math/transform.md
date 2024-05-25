@@ -11,9 +11,9 @@ $v^{\prime} = v_x \begin{bmatrix} i_x \\ i_y\end{bmatrix} + v_y \begin{bmatrix} 
 
 好，书归正传，我们换一种写法
 
-$v^{\prime} = v \begin{bmatrix} i_x \\ i_y\end{bmatrix} \begin{bmatrix} j_x \\ j_y\end{bmatrix} = v \begin{bmatrix} i_x & j_x\\i_y & j_y\end{bmatrix} = \begin{bmatrix} v_x i_x + v_y j_x \\ v_x i_y + v_y j_y\end{bmatrix}$ 
+$v^{\prime} = v \begin{bmatrix} i_x & j_x\\i_y & j_y\end{bmatrix} = \begin{bmatrix} v_x i_x + v_y j_x \\ v_x i_y + v_y j_y\end{bmatrix}$ 
 
-如此我们就定义了**向量与矩阵的乘法运算**
+如此我们就定义了向量与矩阵的乘法运算
 
 ## 矩阵与矩阵的乘法
 重复一遍“任何向量都是**基向量**的线性组合”，基向量也是向量, 把基向量 $ij$ 转换到基向量 $mn$ 张成的空间下
@@ -26,7 +26,15 @@ $j' = j_x m + j_y n$
 
 $\begin{bmatrix} i'  \quad  j' \end{bmatrix} = \begin{bmatrix} i_x m + i_y n  \quad  j_x m + j_y n \end{bmatrix} = \begin{bmatrix} i_x m_x + i_y n_x & j_x m_x+ j_y n_x \\ i_x m_y + i_y n_y & j_x m_y + j_y n_y\end{bmatrix} = \begin{bmatrix} i_x & j_x\\i_y & j_y\end{bmatrix} \begin{bmatrix} m_x & n_x\\m_y & n_y\end{bmatrix} $
 
-如此，我们又定义了**矩阵乘法**
+如此，我们又定义了矩阵乘法
 
 ## 矩阵加法？
 https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_020_Skins.md
+
+## 向量与向量的乘法（点积）
+想像一个一维矩阵，它的基向量是一维向量 $i$ 和 $j$, 用这个矩阵去变换向量 $v$  
+$v^{\prime} = v_x \begin{bmatrix} i \end{bmatrix} + v_y \begin{bmatrix} j \end{bmatrix} = v_x i + v_y j$
+
+也换一种写法  
+$v^{\prime} = v \begin{bmatrix} i \quad j \end{bmatrix} = \begin{bmatrix} v_x \\ v_y \end{bmatrix} \begin{bmatrix} i \quad j \end{bmatrix} = v_x i + v_y j$  
+如此我们又定义了向量与向量的乘法（点积），由于这是将向量做一维变换，其结果是投影也就不奇怪了
