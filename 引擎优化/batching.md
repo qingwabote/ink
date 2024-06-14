@@ -1,5 +1,6 @@
 # 静态合批（Static Batching）
-把一个节点下的所有子节点的 MeshRenderer 的 mesh 合并成一个大 mesh, 合并后自然无法修改原有的子节点（已经不存在了），所以称为静态合批。
+把一个节点下的所有子节点的 MeshRenderer 的 mesh 合并成一个大 mesh, 合并后自然无法修改原有的子节点（节点已经不存在了），所以称为静态合批。
+可以每帧重新合并实现动态合批，这也是 2D 中的合并手段。考虑到 3D 模型巨大的顶点数量在合并时带来的 CPU 开销，cocos 3.6.2 已移除了 3D 下的每帧合并功能（合并 VB 合批）
 
 # 动态合批（Dynamic Batching）
 
@@ -15,6 +16,7 @@
 1 specifies that you have one attribute value per instance, and the value is fetched based on the instance id (gl_InstanceID)." <https://stackoverflow.com/questions/31398169/how-attribute-divisor-works-with-indexed-drawing>*
 
 ### Cocos 的实现
+editor\assets\chunks\cc-local-batch.chunk
 ```glsl
 #if USE_INSTANCING
   in vec4 a_matWorld0;
@@ -34,62 +36,25 @@
   #include <cc-local>
 #endif
 ```
-*editor\assets\chunks\cc-local-batch.chunk*
 
-每个顶点属性最多四个分量 <https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribPointer.xhtml>，所以这里把 mat4 matWorld 拆成了 vec4×3  
-在 cocos\core\renderer\scene\model.ts
-```ts
-    public updateUBOs (stamp: number) {
-        const subModels = this._subModels;
-        for (let i = 0; i < subModels.length; i++) {
-            subModels[i].update();
-        }
-        this._updateStamp = stamp;
-
-        if (!this._localDataUpdated) { return; }
-        this._localDataUpdated = false;
-
-        // @ts-expect-error using private members here for efficiency
-        const worldMatrix = this.transform._mat;
-        const idx = this._instMatWorldIdx;
-        if (idx >= 0) {
-            const attrs = this.instancedAttributes.views;
-            uploadMat4AsVec4x3(worldMatrix, attrs[idx], attrs[idx + 1], attrs[idx + 2]);
-        } else if (this._localBuffer) {
-            Mat4.toArray(this._localData, worldMatrix, UBOLocal.MAT_WORLD_OFFSET);
-            Mat4.inverseTranspose(m4_1, worldMatrix);
-            if (!JSB) {
-                // fix precision lost of webGL on android device
-                // scale worldIT mat to around 1.0 by product its sqrt of determinant.
-                const det = Math.abs(Mat4.determinant(m4_1));
-                const factor = 1.0 / Math.sqrt(det);
-                Mat4.multiplyScalar(m4_1, m4_1, factor);
-            }
-            Mat4.toArray(this._localData, m4_1, UBOLocal.MAT_WORLD_IT_OFFSET);
-            this._localBuffer.update(this._localData);
-            this._applyLocalData();
-            this._applyLocalBuffer();
-        }
-    }
+每个顶点属性最多 4 个分量, 所以这里把 mat4 matWorld 拆成了 vec4×3, 这里齐次坐标是常量，所以省略了 1 个  
+editor\assets\chunks\builtin\functionalities\world-transform.chunk
+```glsl
+void CCGetWorldMatrix(out mat4 matWorld)
+{
+  #if USE_INSTANCING
+    matWorld = mat4(
+      vec4(a_matWorld0.xyz, 0.0),
+      vec4(a_matWorld1.xyz, 0.0),
+      vec4(a_matWorld2.xyz, 0.0),
+      vec4(a_matWorld0.w, a_matWorld1.w, a_matWorld2.w, 1.0)
+    );
+  #else
+    matWorld = cc_matWorld;
+  #endif
+}
 ```
-和 cocos\3d\framework\mesh-renderer.ts
-```ts
-    protected _onUpdateLightingmap () {
-        if (this.model !== null) {
-            this.model.updateLightingmap(this.lightmapSettings.texture, this.lightmapSettings.uvParam);
-        }
-
-        this.setInstancedAttribute('a_lightingMapUVParam', [
-            this.lightmapSettings.uvParam.x,
-            this.lightmapSettings.uvParam.y,
-            this.lightmapSettings.uvParam.z,
-            this.lightmapSettings.uvParam.w,
-        ]);
-    }
-```
-对这些顶点属性进行了填充
-
-CPU 每一帧进行“实例缓冲合并”，Cocos 通过直接对比 indexBuffer 来分组，这意味着 Mesh 必须相同，再加上 Material 相同，是不是可以认为 Instancing 只能用来合并相同的模型？
+CPU 每一帧进行“实例缓冲合并”，Cocos 通过直接对比 indexBuffer 来分组，这意味着 Mesh 必须相同，Material 相同
 ```ts
     public merge (subModel: SubModel, attrs: IInstancedAttributeBlock, passIdx: number, shaderImplant: Shader | null = null) {
         ...
@@ -114,8 +79,6 @@ CPU 每一帧进行“实例缓冲合并”，Cocos 通过直接对比 indexBuff
 ```
 *cocos\core\pipeline\instanced-buffer.ts*
 
-## 合并 VB
-
 # 2D
 在 Cocos 中，2D 对象没有模型，以 Canvas（RenderRoot2D）为入口收集数据并自动执行合批。
 
@@ -123,8 +86,7 @@ CPU 每一帧进行“实例缓冲合并”，Cocos 通过直接对比 indexBuff
 将图片纹理合并使合批不被打断。
 ### 静态合图（自动图集）
 ### 动态合图
-利用图形引擎部分更新纹理的功能（glTexSubImage2D），将多个图像上传到一个纹理中，来实现动态图集。  
-*为什么不支持压缩纹理？*
+利用图形引擎部分更新纹理的功能（glTexSubImage2D），将多个图像上传到一个纹理中，来实现动态图集（不支持压缩纹理）。  
 ```ts
 public _checkPackable () {
     const dynamicAtlas = dynamicAtlasManager;

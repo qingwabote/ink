@@ -36,9 +36,9 @@ object VertexShader {
 VertexBuffers::pos -> VertexShader::a_position
 VertexBuffers::col -> VertexShader::a_color
 ```
-vertexAttribPointer 可以通过 VAO 实现复用，但它与 buffer 耦合，更换 buffer 就得创建新的 VAO。后来被拆成了 VertexAttribFormat 、VertexAttribBinding 和 BindVertexBuffer，VertexAttribBinding 将 attribute 绑定到一个 binding point 上避免与 buffer 直接绑定，运行时使用 BindVertexBuffer 与 VertexArrayVertexBuffer 实现 VAO 的复用（这一点是我的猜测，没有实验过）。
+vertexAttribPointer 可以通过 VAO 实现复用，但它与 buffer 耦合，更换 buffer 就得创建新的 VAO。后来被拆成了 VertexAttribFormat 、VertexAttribBinding 和 BindVertexBuffer，VertexAttribBinding 将 attribute 绑定到一个 binding point 上避免与 buffer 直接绑定，运行时使用 BindVertexBuffer 与 VertexArrayVertexBuffer 实现 VAO 的复用，否则，比如在 instancing 时，我们不得不为每个批次创建一个 VAO。
 
-[glVertexAttribPointer 后来拆成了 glVertexAttribFormat 和 glBindVertexBuffer (VkVertexInputAttributeDescription and vkCmdBindVertexBuffers in Vulkan)，概念就清晰了。不过 WebGL 中没有实现。](https://stackoverflow.com/questions/37972229/glvertexattribpointer-and-glvertexattribformat-whats-the-difference)
+[glVertexAttribPointer 后来拆成了 glVertexAttribFormat 和 glBindVertexBuffer （对应 Vulkan 中 VkVertexInputAttributeDescription 和 vkCmdBindVertexBuffers），概念就清晰了。可惜 WebGL 中没有实现。](https://stackoverflow.com/questions/37972229/glvertexattribpointer-and-glvertexattribformat-whats-the-difference)
 
 [While the ArrayBuffer can be filled with both integers and floats, the attributes will always be converted to a float when they are sent to the vertex shader. If you need to use integers in your vertex shader code, you can either cast the float back to an integer in the vertex shader (e.g. (int) floatNumber), or use gl.vertexAttribIPointer() (en-US) from WebGL2.](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGLRenderingContext/vertexAttribPointer#integer_attributes) 由此看来，shader 读取 buffer 时做了数据类型转换，这就是为什么骨骼动画的顶点数组中关节(JOINTS_0) vec4 可以是 unsigned byte(8bits) 或 unsigned short(16bits) 的，而不影响 shader 中使用 uvec4(32bits) 接收数据。
 
