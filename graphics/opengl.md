@@ -18,3 +18,5 @@ https://zhuanlan.zhihu.com/p/59691803
 # 现代图形 API 的 Bindless
 https://zhuanlan.zhihu.com/p/136449475
 
+# implicit synchronization
+https://www.khronos.org/opengl/wiki/Buffer_Object_Streaming
