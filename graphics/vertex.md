@@ -18,23 +18,19 @@ If the VK_KHR_portability_subset extension is enabled, and VkPhysicalDevicePorta
 而 gltf 的 offset 超出了 VkPhysicalDeviceLimits::maxVertexInputAttributeOffset 的限制 *<https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#_accessor_byteoffset>*
 
 # 资源绑定
-## OpenGL
 vertexAttribPointer(index, ...) 将 bufer 绑定到 attribute index(location)
 ```plantuml
 skinparam handwritten true
 
-map VertexBuffers {
- pos =>
- col => 
+object VertexBuffers {
+ position buffer
+ color buffer
 }
 
 object VertexShader {
  layout(location = 0) in vec4 a_position
  layout(location = 1) in vec4 a_color
 }
-
-VertexBuffers::pos -> VertexShader::a_position
-VertexBuffers::col -> VertexShader::a_color
 ```
 vertexAttribPointer 可以通过 VAO 实现复用，但它与 buffer 耦合，更换 buffer 就得创建新的 VAO。后来被拆成了 VertexAttribFormat 、VertexAttribBinding 和 BindVertexBuffer，VertexAttribBinding 将 attribute 绑定到一个 binding point 上避免与 buffer 直接绑定，运行时使用 BindVertexBuffer 与 VertexArrayVertexBuffer 实现 VAO 的复用，否则，比如在 instancing 时，我们不得不为每个批次创建一个 VAO。
 
@@ -43,10 +39,3 @@ vertexAttribPointer 可以通过 VAO 实现复用，但它与 buffer 耦合，�
 [While the ArrayBuffer can be filled with both integers and floats, the attributes will always be converted to a float when they are sent to the vertex shader. If you need to use integers in your vertex shader code, you can either cast the float back to an integer in the vertex shader (e.g. (int) floatNumber), or use gl.vertexAttribIPointer() (en-US) from WebGL2.](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGLRenderingContext/vertexAttribPointer#integer_attributes) 由此看来，shader 读取 buffer 时做了数据类型转换，这就是为什么骨骼动画的顶点数组中关节(JOINTS_0) vec4 可以是 unsigned byte(8bits) 或 unsigned short(16bits) 的，而不影响 shader 中使用 uvec4(32bits) 接收数据。
 
 *[understanding glVertexAttribPointer](https://stackoverflow.com/questions/24876647/understanding-glvertexattribpointer)*
-
-## Vulkan
-Vulkan 中我们先定义 attribute (VkVertexInputAttributeDescription) 与 **binding point** (VkVertexInputBindingDescription), 这样 pipeline 就确定了。然后在运行时将 buffer 绑定到 **binding point** (vkCmdBindVertexBuffers).
-
-*[Vertex shader input variables are bound to buffers via an **indirect** binding](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fxvertex-attrib)*
-
-*[What is the purpose of `binding` from `VkVertexInputBindingDescription`?](https://stackoverflow.com/questions/40450342/what-is-the-purpose-of-binding-from-vkvertexinputbindingdescription)*
