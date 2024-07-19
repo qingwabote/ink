@@ -103,7 +103,7 @@ treat_warnings_as_errors=false
 最后 ninja -C out.gn/x64.release
 
 ## Android
-v8 for android 不能在 windows 下构建，这里走 WSL。depot_tools 可以继续用 windows 上的，v8 源码需要另起炉灶，因为 windows 构建后 v8 库遗留下了 windows 的文件，不知如何清理。
+v8 for android 不能在 windows 下构建，这里走 WSL。depot_tools 可以继续用 windows 上的，v8 源码我另起炉灶了，因为 windows 构建 v8 留下的 windows 的文件，不知道如何清理。
 ```
 target_os = "android"
 target_cpu = "arm64"
@@ -135,7 +135,7 @@ v8_static_library=true
 v8_monolithic = true
 ```
 
-v8_monolith 这个参数下面也不能省
+参数 v8_monolith 不能省
 ```
 ninja -C out.gn/arm.release v8_monolith
 ```

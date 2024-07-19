@@ -2,7 +2,9 @@ GPU 设备是一个**状态机**，顶点数据是**输入**，而使用什么�
 
 不难看出，如果将使用相同材质的模型的**顶点数据合并**，就可以一次 Draw Call 绘制多个模型。但合并顶点数据也要消耗 CPU 算力，比如坐标变换。
 
-3D 模型顶点数量巨大，通常设置变换矩阵为全局变量以在着色器中完成顶点变换实现模型的移动：模型A → 变换A → draw, 模型B → 变换B → draw. 这里即使相同的模型，相同的材质，也要消耗多个 Draw Call. 如果将变换矩阵写入到每个顶点的数据中，空间、算力又吃不消。硬件的 **GPU Instancing** 技术为此而生，Draw call 内部循环自身，每次循环额外从[特殊的顶点缓冲](https://www.khronos.org/opengl/wiki/Vertex_Specification#Instanced_arrays)中读取一次数据（或者使用 GLSL 内置变量 gl_InstanceID 去 uniform buffer, texture 或任何其它位置索引数据），比如变换矩阵，实现每次循环绘制模型的一个“实例”。
+3D 模型顶点数量巨大，通常设置变换矩阵为全局变量以在着色器中完成顶点变换实现模型的移动：模型A → 变换A → draw, 模型B → 变换B → draw. 这里即使相同的模型，相同的材质，也要消耗多个 Draw Call. 如果将变换矩阵写入到每个顶点的数据中，空间、算力又吃不消。硬件的 **GPU Instancing** 技术为此而生，Draw call 内部循环自身，每次循环额外从[特殊的顶点缓冲](https://www.khronos.org/opengl/wiki/Vertex_Specification#Instanced_arrays)中读取一次数据（或者使用 GLSL 内置变量 gl_InstanceID 去 uniform buffer(size limitation), texture 或任何其它位置索引数据），比如变换矩阵，实现每次循环绘制模型的一个“实例”。
+
+*[Do not use more than one instanced vertex buffer per draw call?](https://developer.arm.com/documentation/101897/0302/Vertex-shading/Instanced-vertex-buffers)*
 
 ## CPU → GPU
 CPU 需要从用户模式切换到内核模式与 GPU 通讯，这是耗时的，因此图形的 Runtime/Driver 将 Draw Call 与其它命令预先编码到 Command Buffer 再一起发送给 GPU，在此过程中还要对命令进行验证，这些都消耗 CPU 算力。
