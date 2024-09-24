@@ -2,9 +2,15 @@
 
 [Vulkan 学习笔记](https://github.com/GavinKG/ILearnVulkanFromScratch-CN)
 
-# Vulkan Loader
+# Vulkan loader
 在 windows 上为 vulkan-1.dll，Vulkan Runtime 说的应该也是它。  
-*[Runtime - Runtime Installer. Installs the Vulkan Loader on your system. Most users do NOT need to install the runtime installer. The preferred method for obtaining the runtime installer is from your IHVs driver package update.](https://vulkan.lunarg.com/sdk/home?fbclid=IwAR3uPe0tJMTAdnaDAELcT-wI44vKlvv1hEfzokwyLIQuOAgOI6D7qh_HjnA)* 
+*[Runtime - Runtime Installer. Installs the Vulkan Loader on your system. Most users do NOT need to install the runtime installer. The preferred method for obtaining the runtime installer is from your IHVs driver package update.](https://vulkan.lunarg.com/sdk/home?fbclid=IwAR3uPe0tJMTAdnaDAELcT-wI44vKlvv1hEfzokwyLIQuOAgOI6D7qh_HjnA)*
+
+通过 vkEnumerateInstanceVersion 查看它的版本。
+
+# Vulkan driver
+版本在 vkGetPhysicalDeviceProperties 中。  
+*[It is possible that the loader and implementations(aka: driver or physical device) will support different versions.](https://docs.vulkan.org/guide/latest/versions.html#_instance_and_device)*
 
 # Threaded Command Buffer Generation
 ```plantuml
@@ -41,6 +47,33 @@ Thread4 -right-> GPU
 ```
 *<https://developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf>*
 
+# Memory
+
+## Memory Heap
+Dedicated GPU
+```plantuml
+skinparam handwritten true
+
+state "Device Memory" as DeviceMemory {
+    state "Device Local" as DeviceLocal
+    state "Device Local | Host Visible" as DeviceHost
+}
+
+state "Host Memory" as HostMemory {
+    state "Host Visible" as HostVisible
+}
+```
+Integrated GPU
+```plantuml
+skinparam handwritten true
+
+state "Unified Memory" as UnifiedMemory {
+    state "Device Local | Host Visible" as DeviceHost
+}
+```
+## Vulkan Memory Allocator
+[Recommended usage patterns](https://gpuopen-librariesandsdks.github.io/VulkanMemoryAllocator/html/usage_patterns.html)
+
 # Synchronization
 ## Pipeline Barriers
 *[Global memory barriers vs buffer/image memory barrier](https://www.reddit.com/r/vulkan/comments/v2mswb/global_memory_barriers_vs_bufferimage_memory/?utm_source=share&utm_medium=web2x&context=3)*
@@ -76,7 +109,7 @@ cacheB <-- memory: invalidate cache,\n make it visible
 ## Memory layout
 
 ## Image layouts
-[Image layouts are likely (though they don't have to be) used for internal transparent compression of images when in use by the GPU. This is NOT a lossy block compressed format, it is an internal format that is used by the GPU to save bandwidth! It is unlikely there will be a "standard" compression format that can be exposed to the CPU. The reason you need to transition your images from one layout to another is some hardware may only be able to access the compressed data from certain hardware blocks.](https://www.reddit.com/r/vulkan/comments/48cvzq/comment/d0j92ac/?utm_source=share&utm_medium=web2x&context=3)
+[Images are stored in implementation-dependent opaque layouts in memory](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-layouts)
 
 ## Access scopes 
 https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#synchronization-dependencies-access-scopes
