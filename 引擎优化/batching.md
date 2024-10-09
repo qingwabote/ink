@@ -1,15 +1,15 @@
-GPU 设备是一个**状态机**，顶点数据是**输入**，而使用什么输入格式，什么着色器，什么全局变量，怎样剔除面，如何做深度测试、颜色混合等等是其**状态**（这些状态的一部分对应的就是游戏引擎中的**材质**），帧缓冲作为**输出**。**Draw Call** 是状态机启动的命令，它将启动流水线，按照这些状态，加工输入的顶点数据，完成一次帧缓冲的写入。
+GPU 设备是一个**状态机**，顶点数据是**输入**，而使用什么输入格式，什么着色器，什么全局变量，怎样剔除面，如何做深度测试、颜色混合等等是其**状态**（这些状态的一部分对应的就是游戏引擎中的**材质**），帧缓冲是其**输出**。**Draw Call** 是状态机启动的命令，它将启动流水线，按照这些状态，加工输入的顶点数据，完成一次帧缓冲的写入。
 
-不难看出，如果将使用相同材质的模型的**顶点数据合并(Dynamic Batching)**，就可以一次 Draw Call 绘制多个模型。但合并顶点数据也要消耗 CPU 算力，比如坐标变换。
+不难看出，如果将相同材质模型的**顶点数据合并(Dynamic Batching)**，就可以一次 Draw Call 绘制多个模型。但合并顶点数据也要消耗 CPU 算力，比如坐标变换。
 
 3D 模型顶点数量巨大，通常设置变换矩阵为全局变量以在着色器中完成顶点变换实现模型的移动：模型A → 变换A → draw, 模型B → 变换B → draw. 这里即使相同的模型，相同的材质，也要消耗多个 Draw Call. 如果将变换矩阵写入到每个顶点的数据中，空间、算力又吃不消。硬件的 **GPU Instancing** 技术为此而生，Draw call 内部循环自身，每次循环额外从[特殊的顶点缓冲](https://www.khronos.org/opengl/wiki/Vertex_Specification#Instanced_arrays)中读取一次数据（或者使用 GLSL 内置变量 gl_InstanceID 去 uniform buffer(size limitation), texture 或任何其它位置索引数据），比如变换矩阵，实现每次循环绘制模型的一个“实例”。
 
-我没有见到使用 GPU Instancing 渲染 2D 图形（比如 Sprite） 的引擎，全是 Dynamic Batching, 我想知道原因？
+*我没有见到使用 GPU Instancing 渲染 2D 图形（比如 Sprite） 的引擎，全是 Dynamic Batching, 我想知道原因？*
 
 *[Do not use more than one instanced vertex buffer per draw call?](https://developer.arm.com/documentation/101897/0302/Vertex-shading/Instanced-vertex-buffers)*
 
 ## CPU → GPU
-CPU 需要从用户模式切换到内核模式与 GPU 通讯，这是耗时的，因此图形的 Runtime/Driver 将 Draw Call 与其它命令预先编码到 Command Buffer 再一起发送给 GPU，在此过程中还要对命令进行验证，这些都消耗 CPU 算力。
+CPU 需要从用户模式切换到内核模式与 GPU 通讯，这是耗时的，因此图形的 Runtime/Driver 将 Draw Call 与其它命令预先**编码**到 Command Buffer 再一起发送给 GPU，在此过程中还要对命令进行**验证**，这些都消耗 CPU 算力。
 
 
 *[Optimizing draw calls](https://docs.unity3d.com/cn/2023.2/Manual/optimizing-draw-calls.html)*

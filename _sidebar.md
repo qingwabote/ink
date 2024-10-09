@@ -33,6 +33,8 @@
     - [数组](js/数组.md)
     - [微信](js/minigame.md)
     - [undefined vs null](js/undefined_vs_null.md)
+- patterns
+    - [RAII](patterns/RAII.md)
 - [地平线项目总结](horizon.md)
 - [HDLPlayer](HDLPlayer.md)
 - [Outline](Outline.md)

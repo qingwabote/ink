@@ -1,9 +1,10 @@
 # [RAII](https://zh.cppreference.com/w/cpp/language/raii)
-## [构造函数中对虚函数的调用(cpp)](https://google.github.io/styleguide/cppguide.html#Doing_Work_in_Constructors)
+## 构造函数中对虚函数的调用(cpp)
+[Avoid virtual method calls in constructors](https://google.github.io/styleguide/cppguide.html#Doing_Work_in_Constructors)
 ## 构造函数中对模板方法的调用(JS)
 在 ES6 构造函数中调用被子类重写的方法时，该方法访问的子类属性尚未初始化，**在派生的类中，在你可以使用 'this' 之前，必须先调用 super()**
 
-如果我们写 init() 并把它包装在静态的 create 方法中，又会陷入 [js 静态方法应不应该被继承的争议之中](https://github.com/microsoft/TypeScript/issues/4628). 我目前的方案像这样：
+如果我们写 initialize() 并把它包装在静态的 create 方法中（二段构造），又会陷入 [js 静态方法应不应该被继承的争议之中](https://github.com/microsoft/TypeScript/issues/4628)，目前我使用类名作为 create 方法名来回避这个问题：
 ``` ts
 export class Pass {
     static Pass(state: PassState, type = 'default') {
