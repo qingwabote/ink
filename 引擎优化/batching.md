@@ -9,7 +9,7 @@ GPU 设备是一个**状态机**，顶点数据是**输入**，而使用什么�
 *[Do not use more than one instanced vertex buffer per draw call?](https://developer.arm.com/documentation/101897/0302/Vertex-shading/Instanced-vertex-buffers)*
 
 ## CPU → GPU
-CPU 需要从用户模式切换到内核模式与 GPU 通讯，这是耗时的，因此图形的 Runtime/Driver 将 Draw Call 与其它命令预先**编码**到 Command Buffer 再一起发送给 GPU，在此过程中还要对命令进行**验证**，这些都消耗 CPU 算力。
+CPU 需要从用户模式切换到内核模式与 GPU 通讯，这是耗时的，因此图形的 Runtime/Driver 将 Draw Call 以及它依赖的那些前置命令预先**编码**到 Command Buffer 再一起发送给 GPU，在此过程中还可以对命令进行**验证**，这些都消耗 CPU 算力。优化时所说的 “减少 Draw Call” 里的 Draw Call 指的因该是 “Draw Call 以及它依赖的那些前置命令”，我甚至尝试过在保证其它命令不变的条件下只将 Draw Call 拆分成多个，CPU 性能下降并不显著。 
 
 
 *[Optimizing draw calls](https://docs.unity3d.com/cn/2023.2/Manual/optimizing-draw-calls.html)*

@@ -87,25 +87,6 @@ state "Unified Memory" as UnifiedMemory {
 [关于 Vulkan Tutorial 中同步问题的解释](https://zhuanlan.zhihu.com/p/350483554)   
 [draw calls will respect the results of previous draw calls, within the same subpass (between subpasses is governed by explicit subpass dependencies)](https://stackoverflow.com/questions/56849788/synchronization-between-drawcalls-in-vulkan)*
 
-## Cache control
-```plantuml
-skinparam handwritten true
-object coreA
-object coreB
-
-object cacheA
-object cacheB
-
-object memory
-
-coreA --> cacheA: write to cache
-cacheA --> memory: flush cache,\n make it available
-
-coreB <-- cacheB: read from cache
-cacheB <-- memory: invalidate cache,\n make it visible
-```
-*[To be clear, we can say that “making memory available” is all about flushing caches, and “making memory visible” is invalidating caches. This should make it more obvious what is going on](http://themaister.net/blog/2019/08/14/yet-another-blog-explaining-vulkan-synchronization/)*
-
 ## Memory layout
 
 ## Image layouts
