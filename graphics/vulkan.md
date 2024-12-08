@@ -76,6 +76,22 @@ state "Unified Memory" as UnifiedMemory {
 
 # Synchronization
 ## Pipeline Barriers
+```plantuml
+skinparam handwritten true
+object coreA
+object coreB
+
+object cacheA
+object cacheB
+
+object memory
+
+coreA --> cacheA: write to cache
+cacheA --> memory: flush cache,\n make it available
+
+coreB <-- cacheB: read from cache
+cacheB <-- memory: invalidate cache,\n make it visible
+```
 *[Global memory barriers vs buffer/image memory barrier](https://www.reddit.com/r/vulkan/comments/v2mswb/global_memory_barriers_vs_bufferimage_memory/?utm_source=share&utm_medium=web2x&context=3)*
 ## Subpass Dependencies
 实际上是 Subpass Stage Dependency, 即上个 Subpass 的某个 Stage 与下个 Subpass 的某个 Stage 的依赖关系  

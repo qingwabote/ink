@@ -23,6 +23,7 @@
 - cpp
     - [链接](cpp/链接.md)
     - [swig](cpp/swig.md)
+    - [多线程](cpp/threading.md)
 - js
     - v8
         - [embedding](js/v8/embedding.md)

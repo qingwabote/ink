@@ -3,28 +3,12 @@ Data race 源于多个线程对同一变量的非原子的读写（至少有一�
 Race condition 典型的例子是两个线程对同一个变量做加 1  
 *[A data race is a type of race condition & Not all regard data races as a subset of race conditions](https://en.wikipedia.org/wiki/Race_condition)*
 
-# Cache controller
-```plantuml
-skinparam handwritten true
-object coreA
-object coreB
-
-object cacheA
-object cacheB
-
-object memory
-
-coreA --> cacheA: write to cache
-cacheA --> memory: flush cache,\n make it available
-
-coreB <-- cacheB: read from cache
-cacheB <-- memory: invalidate cache,\n make it visible
-```
-
-# Instruction reordering
-
 # Atomic operation & Memory fence
+试想，线程 1 管理数据 data, 通过 flag(flag = 1)通知线程 2 可以读取 data 了
 ```cpp
+data = 0;
+flag = 0;
+
 // thread 1
 data = 3;
 flag = 1;
@@ -33,14 +17,9 @@ flag = 1;
 while(flag != 1) {};
 print(data);
 ```
-目前两个变量的读写顺序未知，比如
-```cpp
-load  data
-store data
-store flag
-load  flag
-```
-插入两个**内存屏障**
+目前没有约定两个变量的读写顺序，可能线程 2 读出 flag = 1 时 data = 3 还未写入
+
+现在插入两个**内存屏障**
 ```cpp
 // thread 1
 data = 3;
@@ -52,16 +31,8 @@ while(flag != 1) {};
 --- load ---;
 print(data);
 ```
-循序可能变成这样
-```cpp
-store data
---- store ---;
-store flag
-load  flag
---- load ---;
-load  data
-```
-或者...总之，屏障 load 保证了对 flag 的读在 data 之前，对 data 的写在 flag 之前
+屏障 store 阻塞了 cpu 的写操作，直到清空 cache(完成前面的写入)  
+屏障 load 阻塞了 cpu 的读操作，直到清空 invalidate queue(使之前的写入对 cpu 可见)
 
 如果换成两个**单向屏障**
 ```cpp
@@ -75,9 +46,9 @@ while(flag != 1) {};
 --- load-acquire ---;
 print(data);
 ```
-意味着：  
-允许对 flag 的 store，提前  
-允许对 flag 的 load，延后  
+store-release 只挡住后面的指令  
+load-acquire 只挡住前面的指令
+
 循序可能变成这样
 ```cpp
 store flag
@@ -96,7 +67,7 @@ store flag
 store data
 --- store-release ---;
 ```
-如此，CPU 仅需保证对这两个变量的读和写不会交错
+如此，CPU 仅需保证对这两个变量的读和写不会交错即可，我猜测实现方式是允许清空 cache 延后，允许清空 invalidate queue 提前
 
 # C++
 The standalone acquire fence is not "acquire operation"
