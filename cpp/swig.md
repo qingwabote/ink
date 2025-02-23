@@ -1,5 +1,8 @@
 # [SWIG](https://www.swig.org/)
 
+## Module
+每个 Module 包含完整的 runtime, 独立运行，甚至"SWIG modules generated with different versions can peacefully coexist".
+
 ## 在 JS 绑定中需要解决的问题
 
 ### 总是返回新的 JS 对象

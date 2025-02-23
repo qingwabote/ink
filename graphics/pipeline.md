@@ -1,5 +1,5 @@
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 :PipelineState DescriptorSet InputAssembler;
 :draw;
@@ -22,7 +22,7 @@ Stages with an orange color on the other hand are programmable.
 
 # cocos 视角
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 class InputAssembler #lightGreen
 
@@ -49,7 +49,7 @@ note bottom of InputAssembler: 这里的 InputAssembler 与 vulkan api 里的 In
 ```
 ## 可以看出**材质**实际上是渲染管线状态的资源表现形式
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 class RasterizerState #lightGreen
 class DepthStencilState #lightGreen
@@ -75,7 +75,7 @@ Shader --o PipelineState
 
 # Main Loop
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 Root -> Batcher2D: update
 Batcher2D -> Renderable2D: updateAssembler
