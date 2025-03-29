@@ -17,7 +17,7 @@
     - [剔除](引擎优化/剔除.md)
     - [提前深度测试](引擎优化/提前深度测试.md)
 - cocos
-    - [3D 与 2D](cocos/3D%20与%202D.md)
+    - [3D 与 2D](cocos/2D3D.md)
     - [动画](cocos/动画.md)
     - [UI](cocos/UI.md)
 - cpp
@@ -36,6 +36,9 @@
     - [undefined vs null](js/undefined_vs_null.md)
 - patterns
     - [RAII](patterns/RAII.md)
+- unity
+    - [ECS](unity/ecs.md)
+- [确定性](determinism.md)
 - [地平线项目总结](horizon.md)
 - [HDLPlayer](HDLPlayer.md)
 - [Outline](Outline.md)

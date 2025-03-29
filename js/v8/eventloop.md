@@ -9,3 +9,8 @@ https://github.com/nodejs/help/issues/3124
 浏览器创建一个 event loop，它和 JS 处于同一个线程，每隔一段时间清空一次这个任务队列，执行里面的所有任务。最简单的实现是每次 event loop 锁住这个队列，清空，执行所有任务，解锁。那么，当执行某个任务的过程中又有新的任务添加，比如在 setTimeOut 的 callback 里又调用了 setTimeOut(0)，参数 0 确保它立刻完成并尝试添加回调任务到队列，新任务可能要等 event loop 解锁队列后才能添加进来，所以它的执行对应的会延迟到下一个 event loop。这种设计一直可以满足需求，直到 Promise 的出现，Promise 无法接受这么高的延迟，于是，浏览器又新建了一个任务队列，放在原有的队列后执行，命名为微任务，而以前的就叫宏任务。
 
 微任务确保执行任务的过程中产生的新任务能被及时的添加并执行，比如只在从任务队列里弹出任务时加锁，执行中解锁，确保新的任务能被添加，并且直到队列里的任务全部执行后才退出循环。
+
+
+## v8::platform::PumpMessageLoop
+https://groups.google.com/g/v8-users/c/lRe7WrCkHCE/m/NmMfpDZ-DAAJ
+未见 cocos(v3.7.1) 这样操作，cocos 怎么没出问题？

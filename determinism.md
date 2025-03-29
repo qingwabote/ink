@@ -6,7 +6,7 @@
 
 [Addition is a commutative operation, but not always associative.The result of an addition is determined using the rules of IEEE 754-2008 binary double-precision arithmetic:...](https://262.ecma-international.org/6.0/index.html#sec-applying-the-additive-operators-to-numbers), 这里提到“不总是满足结合律”，以及“运算结果由IEEE 754-2008决定”，是否可以理解为遵守了“IEEE 754-2008 10.4 Literal meaning and value-changing optimizations”？
 
-[The math, the choice of algorithms is left to the implementation, just recommended that implementations use the approximation algorithms for IEEE 754-2008 arithmetic](https://262.ecma-international.org/6.0/index.html#sec-function-properties-of-the-math-object)
+[The math, the choice of algorithms is left to the implementation, just recommended that implementations use the approximation algorithms for IEEE 754-2008 arithmetic](https://262.ecma-international.org/6.0/index.html#sec-function-properties-of-the-math-object), 意味着计算诸如 sin, cos, tan 等等需要使用自己实现的数学库代替原生的，无独有偶 [Rapier determinism](https://rapier.rs/docs/user_guides/rust/determinism/) 推荐使用 rust 实现的 nalgebra.
 
 ### [dropping support for x87](https://lists.webkit.org/pipermail/webkit-dev/2019-March/030569.html)
 https://bugs.webkit.org/show_bug.cgi?id=194853

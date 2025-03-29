@@ -1,7 +1,8 @@
 # Data race & Race condition
 Data race 源于多个线程对同一变量的非原子的读写（至少有一个写），也许用“同一内存地址的非原子读写”更准确，因为分别访问同一变量 vector a 的不同位置 a[0] 和 a[1] 不存在 data race  
-Race condition 典型的例子是两个线程对同一个变量做加 1  
-*[A data race is a type of race condition & Not all regard data races as a subset of race conditions](https://en.wikipedia.org/wiki/Race_condition)*
+由 Data race 造成 Race condition 的典型的例子是两个线程对同一个非原子变量做加 1，不过即便是使用原子变量的非 Data race 情况下仍然可以产生 Race condition  
+*[A data race is a type of race condition & Not all regard data races as a subset of race conditions](https://en.wikipedia.org/wiki/Race_condition)*  
+*[A race condition happens when the output of one operation depends on the timing of another process outside of its control](https://docs.unity3d.com/Manual/job-system-overview.html)*
 
 # Atomic operation & Memory fence
 试想，线程 1 管理数据 data, 通过 flag(flag = 1)通知线程 2 可以读取 data 了

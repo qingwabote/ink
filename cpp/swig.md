@@ -15,8 +15,9 @@ swig 并不维护其生成的 JS 对象。可以创建 map 将 JS 对象与原�
 可以使用 [Typemaps](https://www.swig.org/Doc4.1/Typemaps.html#Typemaps) 自己实现
 
 ### 对智能指针的支持并不完整
-官方提供了 std_unique_ptr.i, 但没有 std_shared_ptr.i, 我在 Zero 引擎中给出了一种[实现方案](https://github.com/qingwabote/zero/blob/master/native/main/swig/Lib/javascript/v8/std_shared_ptr.i)
+官方提供了 std_unique_ptr.i, 但没有 [std_shared_ptr.i](https://github.com/swig/swig/pull/1365), 我在 Zero 引擎中给出了一种[实现方案](https://github.com/qingwabote/zero/blob/master/native/main/swig/Lib/javascript/v8/std_shared_ptr.i)
 
 ### 目前不支持嵌套类
 
 ### 函数可选参数不支持以 undefined 作为实参
+[How to define a parameter as optional, but if specified be ensured as not undefined](https://github.com/microsoft/TypeScript/issues/11988)
