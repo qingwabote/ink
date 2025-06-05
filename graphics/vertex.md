@@ -20,7 +20,7 @@ If the VK_KHR_portability_subset extension is enabled, and VkPhysicalDevicePorta
 # 资源绑定
 vertexAttribPointer(index, ...) 将 bufer 绑定到 attribute index(location)
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 object VertexBuffers {
  position buffer
