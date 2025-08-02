@@ -16,7 +16,7 @@ $v^{\prime} = v \begin{bmatrix} i_x & j_x\\i_y & j_y\end{bmatrix} = \begin{bmatr
 如此我们就定义了向量与矩阵的乘法运算
 
 ## 矩阵与矩阵的乘法
-重复一遍“任何向量都是**基向量**的线性组合”，基向量也是向量, 把基向量 $ij$ 转换到基向量 $mn$ 张成的空间下
+第二遍，“任何向量都是**基向量**的线性组合”，基向量也是向量, 把基向量 $ij$ 转换到基向量 $mn$ 张成的空间下
 
 $i' = i_x m + i_y n$
 
@@ -38,3 +38,14 @@ $v^{\prime} = v_x \begin{bmatrix} i \end{bmatrix} + v_y \begin{bmatrix} j \end{b
 也换一种写法  
 $v^{\prime} = v \begin{bmatrix} i \quad j \end{bmatrix} = \begin{bmatrix} v_x \\ v_y \end{bmatrix} \begin{bmatrix} i \quad j \end{bmatrix} = v_x i + v_y j$  
 如此我们又定义了向量与向量的乘法（点积），由于这是将向量做一维变换，其结果是投影也就不奇怪了
+
+## 平移
+重要的事情说三遍，“任何向量都是**基向量**的线性组合”。如果给这个组合加个 offset
+
+即 $v_x i + v_y j + t$ 然后和谐一下  $v_x i + v_y j + v_w t$
+
+即 $v_x \begin{bmatrix} i_x \\ i_y \\ i_w\end{bmatrix} + v_y \begin{bmatrix} j_x \\ j_y\\ j_w\end{bmatrix} + v_w \begin{bmatrix} t_x \\ t_y\\ t_w\end{bmatrix} = \begin{bmatrix} v_x i_x + v_y j_x + v_w t_x \\ v_x i_y + v_y j_y + v_w t_y \\ v_x i_w + v_y j_w + v_w t_w\end{bmatrix}$ 然后和谐一下
+
+令 $v_w, t_w = 1, i_w, j_w = 0$
+
+即 $\begin{bmatrix} v_x i_x + v_y j_x + v_w t_x \\ v_x i_y + v_y j_y + v_w t_y \\ 0 + 0 + 1\end{bmatrix}$

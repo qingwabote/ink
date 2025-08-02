@@ -8,10 +8,13 @@ ECS 对非托管类型的大量使用，是 Unity 变复杂的根源。
 
 是不是可以说“Burst 是一个 C# 的 **LLVM** 前端”，它自然不能处理**托管类型**
 
+# 多态
+**面相对象**下，对象在内存布局中存在虚函数表，调用虚函数存在**间接调用**开销
+
 # Baking
 然而 ECS 没有独立的编辑器，为了帮助你将 Unity 编辑器中的 **GameObject** 转化成 **Entity**，于是 Unity 引入了一个更复杂的系统
 
-如果你的 IComponentData 包含集合并参与 Baking 你得学习使用 ECS 提供的新集合类型：**Dynamic Buffer** 或 **Blob Array**, 其中只有 Dynamic Buffer 可以存放 Entity
+如果你的 Unmanaged Component 包含集合并参与 Baking 为确保自身的 **Blittable**，你得学习使用 ECS 提供的集合类型：**Dynamic Buffer**(可存放 Entity) 或 **Blob Array**
 
 # [Scenes overview](https://docs.unity3d.com/Packages/com.unity.entities@1.4/manual/conversion-scene-overview.html)
 In the entity component system (ECS), scenes work differently. This is because Unity's core scene system is incompatible with ECS. There are the following types of scene concept to understand:
