@@ -24,7 +24,7 @@ $j' = j_x m + j_y n$
 
 写成矩阵形式
 
-$\begin{bmatrix} i'  \quad  j' \end{bmatrix} = \begin{bmatrix} i_x m + i_y n  \quad  j_x m + j_y n \end{bmatrix} = \begin{bmatrix} i_x m_x + i_y n_x & j_x m_x+ j_y n_x \\ i_x m_y + i_y n_y & j_x m_y + j_y n_y\end{bmatrix} = \begin{bmatrix} i_x & j_x\\i_y & j_y\end{bmatrix} \begin{bmatrix} m_x & n_x\\m_y & n_y\end{bmatrix} $
+$\begin{bmatrix} i'  \quad  j' \end{bmatrix} = \begin{bmatrix} i_x m + i_y n  \quad  j_x m + j_y n \end{bmatrix} = \begin{bmatrix} i_x m_x + i_y n_x & j_x m_x+ j_y n_x \\ i_x m_y + i_y n_y & j_x m_y + j_y n_y\end{bmatrix} = \begin{bmatrix} i_x & j_x\\i_y & j_y\end{bmatrix} \begin{bmatrix} m_x & n_x\\m_y & n_y\end{bmatrix}$
 
 如此，我们又定义了矩阵乘法
 
