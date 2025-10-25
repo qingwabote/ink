@@ -1,2 +1,2 @@
 # Defensive Copy
-[passing a not-readonly struct with an in modifier will cause the compiler to create a defensive copy when calling struct's methods and accessing properties in the Process method above, which will negatively affect performance!](https://stackoverflow.com/questions/52820372/why-would-one-ever-use-the-in-parameter-modifier-in-c)
+https://www.developmentsimplyput.com/post/defensive-copy-in-net-c
