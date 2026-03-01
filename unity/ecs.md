@@ -3,10 +3,10 @@
 
 ## 内存连续
 
-## Burst 
-简化版编译流程 [C#] → [IL] → [Burst LLVM IR] → [Machine Code]
+## Burst
+“Burst 是一个 IL 的 **LLVM** 前端”
 
-是不是可以说“Burst 是一个 C# 的 **LLVM** 前端”，它自然不能处理**托管类型**
+简化版编译流程（每个阶段的产物） [C#] → [IL] → [Burst LLVM IR] → [Machine Code]
 
 # 多态
 **面相对象**下，对象在内存布局中存在虚函数表，调用虚函数存在**间接调用**开销，且不被 burst 支持 
@@ -38,4 +38,8 @@ In the entity component system (ECS), scenes work differently. This is because U
 We create **Subscenes** to reference **Authoring scenes** which contain GameObjects and MonoBehaviour components, and then bake them into **Entity scenes**.
 
 # SystemAPI
-DOTS_OUTPUT_SOURCEGEN_FILES 
+DOTS_OUTPUT_SOURCEGEN_FILES
+
+# Graphics
+## RenderMeshArray
+*https://docs.unity3d.com/Packages/com.unity.entities.graphics@6.5/changelog/CHANGELOG.html#120-pre12---2024-02-13*
