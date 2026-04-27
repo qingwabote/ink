@@ -38,6 +38,7 @@
     - [RAII](patterns/RAII.md)
 - unity
     - [ECS](unity/ecs.md)
+    - [minigame](unity/minigame.md)
     - [RectTransform](unity/RectTransform.md)
 - [确定性](determinism.md)
 - [地平线项目总结](horizon.md)

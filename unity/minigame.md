@@ -1,5 +1,5 @@
 # Unity 6
-即适配新版本的 Emscripten
+适配新版本的 Emscripten
 
 ## Webassembly 2023
 随着 WebAssembly.Table 的开启，DYNCALLS 被关闭了，微信和抖音的 JS 库仍然使用旧的 dynCall_viii
