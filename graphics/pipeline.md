@@ -4,13 +4,13 @@
 :PipelineState DescriptorSet InputAssembler;
 :draw;
 partition GPU {
-    #lightGreen:Input assembler;
-    #orange:Vertex shader;
-    #orange:Tessellation;
-    #orange:Geometry shader;
-    #lightGreen:Rasterization;
-    #orange:Fragment shader;
-    #lightGreen:Color blending;
+    :Input assembler;<<#lightGreen>>
+    :Vertex shader;<<#orange>>
+    :Tessellation;<<#orange>>
+    :Geometry shader;<<#orange>>
+    :Rasterization;<<#lightGreen>>
+    :Fragment shader;<<#orange>>
+    :Color blending;<<#lightGreen>>
 }
 :Framebuffer;
 ```

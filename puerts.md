@@ -2,7 +2,7 @@ Mono 使用 [平台调用 (P/Invoke)](https://docs.microsoft.com/zh-cn/dotnet/st
 
 # CS 向 JSEngine 注册类型
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
  -> TypeRegister.cs: RegisterType
 TypeRegister.cs -> JSEngine.cpp:RegisterClass
@@ -16,7 +16,7 @@ note right: 注册属性的 getter 和 setter 函数
 
 # JS 获取已注册的 CS 类型
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 JsEnv.cs -> JSEngine.cpp: SetGlobalFunction("__tgjsLoadType", JsEnv.LoadType)
 csharp.mjs -> JsEnv.cs: LoadType

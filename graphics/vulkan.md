@@ -14,7 +14,7 @@
 
 # Threaded Command Buffer Generation
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 state "Thread/CPU 1 (Busy)" as Thread1 {
     state "Update Work" as UW1
@@ -52,7 +52,7 @@ Thread4 -right-> GPU
 ## Memory Heap
 Dedicated GPU
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 state "Device Memory" as DeviceMemory {
     state "Device Local" as DeviceLocal
@@ -65,7 +65,7 @@ state "Host Memory" as HostMemory {
 ```
 Integrated GPU
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 state "Unified Memory" as UnifiedMemory {
     state "Device Local | Host Visible" as DeviceHost
@@ -77,7 +77,7 @@ state "Unified Memory" as UnifiedMemory {
 # Synchronization
 ## Pipeline Barriers
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 object coreA
 object coreB
 

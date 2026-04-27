@@ -1,5 +1,5 @@
 ```plantuml
-skinparam handwritten true
+!option handwritten true
 
 Batcher2D -> Mask: updateAssembler
 Mask -> Mask.Assembler: fillBuffers
