@@ -24,20 +24,20 @@ Webassembly 优于 Javascript, SIMD 对于重向量运算有明显性能提升
 iPhone XR 1792x828, A12 Bionic  
 FPS 60  
 敌人数量(Enemies) 670
-![](https://mmgame.qpic.cn/image/5207e3b83bfd35036db51e04fb9c272f6a2dc43ac872f876437c242e01122470/0)
+<img src="https://mmgame.qpic.cn/image/5207e3b83bfd35036db51e04fb9c272f6a2dc43ac872f876437c242e01122470/0" referrerpolicy="no-referrer">
 
 iPhone SE 2 1334x750, A13 Bionic  
 FPS 60  
 敌人数量(Enemies) 661
-![](https://mmgame.qpic.cn/image/26d96348c1b75ebf740695f7c28f093db948ff0b69101bb3264c977735e25acd/0)
+<img src="https://mmgame.qpic.cn/image/26d96348c1b75ebf740695f7c28f093db948ff0b69101bb3264c977735e25acd/0" referrerpolicy="no-referrer">
 
 小米8 2248x1080, 骁龙 845, Adreno (TM) 630  
 FPS 33  
 敌人数量(Enemies) 673
-![](https://mmgame.qpic.cn/image/349b62178cd59e6e4551a0f5696edbcaeb279aec4a5b5ec9779507c81d05abef/0)
+<img src="https://mmgame.qpic.cn/image/349b62178cd59e6e4551a0f5696edbcaeb279aec4a5b5ec9779507c81d05abef/0" referrerpolicy="no-referrer">
 
 vivo Z5 2340x1080, 骁龙712, Adreno (TM) 616  
 FPS 41  
 敌人数量(Enemies) 681
-![](https://mmgame.qpic.cn/image/624e92330f7b13bb31f932d034dbb667f92993b2abc8fbd02ffa861b99867a2c/0)
+<img src="https://mmgame.qpic.cn/image/624e92330f7b13bb31f932d034dbb667f92993b2abc8fbd02ffa861b99867a2c/0" referrerpolicy="no-referrer">
 > 截图来自微信云测试
