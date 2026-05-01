@@ -32,6 +32,7 @@ iPhone XR 1792x828, A12 Bionic
 FPS 60  
 敌人数量(Enemies) 670
 <img src="https://mmgame.qpic.cn/image/5207e3b83bfd35036db51e04fb9c272f6a2dc43ac872f876437c242e01122470/0" referrerpolicy="no-referrer">
+> 截图来自微信云测试。
 
 iPhone SE 2 1334x750, A13 Bionic  
 FPS 60  
@@ -50,7 +51,7 @@ FPS 41
 
 *游戏基于 Unity Entities, 用 [Graphix](https://github.com/qingwabote/graphix) 渲染, 使用了物理引擎（但敌人之间的避障走 RVO）*
 
-> 截图来自微信云测试。
+<img src="https://mmgame.qpic.cn/image/95abb1c4bd6c789f35717eb40464e02a2d3f8be8868c4de3915bf09725b69390/0" referrerpolicy="no-referrer">
 
 ## 如果感兴趣
 qingwabote@126.com
