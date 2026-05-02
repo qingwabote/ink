@@ -18,9 +18,7 @@ partition GPU {
 Stages with an orange color on the other hand are programmable.  
 <https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Introduction>*
 
-*[猴子也能看懂的渲染管线](https://zhuanlan.zhihu.com/p/137780634)*
-
-# cocos 视角
+# Cocos 视角
 ```plantuml
 !option handwritten true
 
@@ -47,7 +45,7 @@ note right of StaticVBAccessor : 对应 RenderData
 note right of MeshBuffer : 收集相同格式的顶点
 note bottom of InputAssembler: 这里的 InputAssembler 与 vulkan api 里的 InputAssemblyState 不是一个概念。\nInputAssembler 包含顶点缓冲，顶点索引缓冲、顶点属性信息... 在 webgl 中正好对应一个 VAO
 ```
-## 可以看出**材质**实际上是渲染管线一部分状态的资源表现形式
+## **材质**是渲染管线一部分状态的资源表现形式
 ```plantuml
 !option handwritten true
 
@@ -73,7 +71,7 @@ Shader --o PipelineState
 ```
 *[材质正是对管线某一个状态的完整描述](https://www.cxybb.com/article/6346289/110018037>)；[我们通常用材质文件来描述上述PSO状态数据，Shader数据和贴图数据](https://my.oschina.net/HMSCore/blog/5067171)*
 
-# Main Loop
+# main loop
 ```plantuml
 !option handwritten true
 
@@ -95,19 +93,4 @@ Root -> RenderPipeline: render
 RenderPipeline -> RenderStage: render
 RenderStage -> CommandBuffer: draw
 ```
-
-深入理解CocosCreator 3D渲染管线 https://forum.cocos.org/t/topic/101841
-
-Cocos Creator 3D源码简析 https://forum.cocos.org/t/cocos-creator-3d/99630
-
-Cocos Creator 3.0源码漫游 https://forum.cocos.org/t/topic/102023
-
-麒麟子带你快速进入Cocos Creator的3D世界 https://forum.cocos.org/t/topic/124256
-
-# GPU专栏(四) 基于块的渲染(Tile Based Rendering)
-https://www.cnblogs.com/Arnold-Zhang/p/15514499.html
-# TBR和TBDR
-https://zhuanlan.zhihu.com/p/429519726
-# 自定义渲染
-https://docs.cocos.com/creator/manual/zh/advanced-topics/custom-render.html?q=#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B8%B2%E6%9F%93
 

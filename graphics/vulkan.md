@@ -1,7 +1,3 @@
-[Vulkan 简介](https://zhuanlan.zhihu.com/p/165141740)
-
-[Vulkan 学习笔记](https://github.com/GavinKG/ILearnVulkanFromScratch-CN)
-
 # Vulkan loader
 在 windows 上为 vulkan-1.dll，Vulkan Runtime 说的应该也是它。  
 *[Runtime - Runtime Installer. Installs the Vulkan Loader on your system. Most users do NOT need to install the runtime installer. The preferred method for obtaining the runtime installer is from your IHVs driver package update.](https://vulkan.lunarg.com/sdk/home?fbclid=IwAR3uPe0tJMTAdnaDAELcT-wI44vKlvv1hEfzokwyLIQuOAgOI6D7qh_HjnA)*

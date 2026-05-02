@@ -1,25 +1,29 @@
-- 3D 数学
-    - [3D旋转](math/rotation.md)
-    - [变换](math/transform.md)
-- 光照
-    - [反射方程](lighting/equation.md)
-    - [光照](lighting/光照.md)
-    - [阴影](lighting/阴影.md)
-- graphics
-    - [渲染管线](graphics/pipeline.md)
-    - [伽马校正](graphics/gamma.md)
-    - [opengl](graphics/opengl.md)
-    - [vertex](graphics/vertex.md)
-    - [vulkan](graphics/vulkan.md)
+- unity
+    - [ECS](unity/ecs.md)
+    - [minigame](unity/minigame.md)
+    - [RectTransform](unity/RectTransform.md)
+- cocos
+    - [3D 与 2D](cocos/2D3D.md)
+    - [动画](cocos/动画.md)
+    - [UI](cocos/UI.md)
+- [微信小游戏](js/minigame.md)
 - 引擎优化
     - [反走样](引擎优化/反走样.md)
     - [合批](引擎优化/batching.md)
     - [剔除](引擎优化/剔除.md)
     - [提前深度测试](引擎优化/提前深度测试.md)
-- cocos
-    - [3D 与 2D](cocos/2D3D.md)
-    - [动画](cocos/动画.md)
-    - [UI](cocos/UI.md)
+- graphics
+    - [渲染管线](graphics/pipeline.md)
+    - [伽马校正](graphics/gamma.md)
+    - [vertex](graphics/vertex.md)
+    - [vulkan](graphics/vulkan.md)
+- 光照
+    - [反射方程](lighting/equation.md)
+    - [光照](lighting/光照.md)
+    - [阴影](lighting/阴影.md)
+- math
+    - [变换](math/transform.md)
+    - [旋转](math/rotation.md)
 - cpp
     - [链接](cpp/链接.md)
     - [swig](cpp/swig.md)
@@ -32,14 +36,9 @@
     - [对象](js/对象.md)
     - [模块](js/模块.md)
     - [数组](js/数组.md)
-    - [微信](js/minigame.md)
     - [undefined vs null](js/undefined_vs_null.md)
 - patterns
     - [RAII](patterns/RAII.md)
-- unity
-    - [ECS](unity/ecs.md)
-    - [minigame](unity/minigame.md)
-    - [RectTransform](unity/RectTransform.md)
 - [确定性](determinism.md)
 - [地平线项目总结](horizon.md)
 - [HDLPlayer](HDLPlayer.md)
