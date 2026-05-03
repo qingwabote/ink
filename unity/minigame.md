@@ -28,6 +28,7 @@ Unity 构建 WebGL 时将所有资源文件打包到 .data 文件中，引擎初
 
 ## AssetBundleProvider
 可以通过自定义 [AssetBundleProvider](https://github.com/qingwabote/flavor/blob/main/core/AssetBundleProvider.cs) 把 AssetBundle 与小游戏分包结合起来
+> [子包更新机制](/js/minigame.md#子包更新机制)
 
 ## SubScene(Entities)
 使用 Addressables 加载 Scene 时并没有按预期的处理 SubScene，事实上 Entities 与 Addressables 互不兼容  
