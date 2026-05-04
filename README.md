@@ -12,7 +12,7 @@ https://qingwabote.github.io/fishes-pages/skinning-256-unity-simd/
 **Cocos** 针对 WebGL 不支持 Compute Shader 的问题，选择了 Vertex Shader Skinning, 顶点变换在 Vertex Shader 中执行，所以比纯 CPU 运算性能好，缺陷是 Vertex Shader 每个 Pass 都执行一遍，对多 Pass 不友好，而且 Cocos 实时运算不走 GPU Instancing：  
 https://qingwabote.github.io/fishes-pages/skinning-256-cocos/
 
-**Unity ECS** 下我在 [Graphix](https://github.com/qingwabote/graphix) 中实现了 Vertex Shader Skinning, 把性能找补了回来，并且超越了 Cocos：  
+**Unity ECS** 下我在 [Graphix](unity/graphix.md) 中实现了 Vertex Shader Skinning, 把性能找补了回来，并且超越了 Cocos：  
 https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs/  
 开启 SIMD：  
 https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-simd/  
@@ -27,7 +27,7 @@ https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-simd/
 Javascript 没有复合类型的值对象，很难实现在内存中连续访问一批对象，对缓存不友好。Unity C# 则可以利用值类型将对象放入连续的内存当中。
 ### Unity Entities
 Entities 在 WebGL 下的最大兼容问题在于配套的 Entities Graphics 依赖 Compute Shader, 所以我自己实现了
-Entities 的渲染器 [Graphix](https://github.com/qingwabote/graphix)  
+Entities 的渲染库 [Graphix](unity/graphix.md)  
 Entities 与 Addressables 互不兼容，若需要分包加载，参考 [Addressables](unity/minigame.md#addressables)
 
 ## Unity 微信小游戏案例
@@ -54,7 +54,7 @@ FPS 41
 敌人数量(Enemies) 681
 <img src="https://mmgame.qpic.cn/image/624e92330f7b13bb31f932d034dbb667f92993b2abc8fbd02ffa861b99867a2c/0" referrerpolicy="no-referrer">
 
-*游戏基于 Unity Entities, 用 [Graphix](https://github.com/qingwabote/graphix) 渲染, 使用了 Unity Physics（但敌人之间的避障走 RVO）*
+*游戏基于 Unity Entities, 用 [Graphix](unity/graphix.md) 渲染, 使用了 Unity Physics（但敌人之间的避障走 RVO）*
 
 <img src="https://mmgame.qpic.cn/image/95abb1c4bd6c789f35717eb40464e02a2d3f8be8868c4de3915bf09725b69390/0" referrerpolicy="no-referrer">
 

@@ -40,6 +40,8 @@ We create **Subscenes** to reference **Authoring scenes** which contain GameObje
 ## SystemAPI
 DOTS_OUTPUT_SOURCEGEN_FILES
 
-## Graphics
+## Entities Graphics
+Entities Graphics 不支持 WebGL, 我模仿它的接口实现了兼容 WebGL 的渲染库 [Graphix](/unity/graphix.md)
+
 ### RenderMeshArray
 *https://docs.unity3d.com/Packages/com.unity.entities.graphics@6.5/changelog/CHANGELOG.html#120-pre12---2024-02-13*
