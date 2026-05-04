@@ -18,7 +18,7 @@ partition GPU {
 Stages with an orange color on the other hand are programmable.  
 <https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Introduction>*
 
-# Cocos 视角
+## Cocos 视角
 ```plantuml
 !option handwritten true
 
@@ -45,7 +45,7 @@ note right of StaticVBAccessor : 对应 RenderData
 note right of MeshBuffer : 收集相同格式的顶点
 note bottom of InputAssembler: 这里的 InputAssembler 与 vulkan api 里的 InputAssemblyState 不是一个概念。\nInputAssembler 包含顶点缓冲，顶点索引缓冲、顶点属性信息... 在 webgl 中正好对应一个 VAO
 ```
-## **材质**是渲染管线一部分状态的资源表现形式
+### **材质**是渲染管线一部分状态的资源表现形式
 ```plantuml
 !option handwritten true
 
@@ -71,7 +71,7 @@ Shader --o PipelineState
 ```
 *[材质正是对管线某一个状态的完整描述](https://www.cxybb.com/article/6346289/110018037>)；[我们通常用材质文件来描述上述PSO状态数据，Shader数据和贴图数据](https://my.oschina.net/HMSCore/blog/5067171)*
 
-# main loop
+## main loop
 ```plantuml
 !option handwritten true
 

@@ -1,4 +1,4 @@
-# Readonly is a joke
+## Readonly is a joke
 
 ```ts
 interface Foo {
@@ -14,7 +14,7 @@ foo.name = ""; // value is changed with no error either
 
 *[add enforceReadonlyAssignability flag for smoother transition to true readonly modifiers](https://github.com/Microsoft/TypeScript/issues/13002)*
 
-# Namespace vs Module
+## Namespace vs Module
 ES Module 解决了符号冲突的问题，但如果想省略前后缀，就得用 Namespace 或等价写法
 ```ts
 export createVec4(...)

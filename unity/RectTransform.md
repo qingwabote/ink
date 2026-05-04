@@ -1,4 +1,4 @@
-# RectTransform 完全(不)理解
+RectTransform 完全(不)理解
 
 ## Pivot
 建模的时候坐标原点“放在” cube 的几何中心还是 soldier 的脚下，那 Image 和 TMP 呢？

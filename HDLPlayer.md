@@ -1,32 +1,32 @@
-# libyuv
+## libyuv
 https://github.com/lemenkov/libyuv/blob/master/docs/getting_started.md
 
-## 注意大小端
+### 注意大小端
 https://github.com/lemenkov/libyuv/blob/master/docs/formats.md#the-argb-fourcc
 
-## build for ios
+### build for ios
 https://github.com/Jichao/libyuv-ios/blob/master/build.sh
 
-## cocos v1.9 使用 xcode 在 ios simulator 构建时需要排除 libyuv_neon.a 这个ARM库（新版本的 cocos 走 cmake 构建，避免了这个问题）
+### cocos v1.9 使用 xcode 在 ios simulator 构建时需要排除 libyuv_neon.a 这个ARM库（新版本的 cocos 走 cmake 构建，避免了这个问题）
 Build Options->Excluded Source File Names->Debug->Any iOS Simulator SDK: libyuv_neon.a
 
-# ijkplayer
+## ijkplayer
 
-## 解析 IJKPlayer
+### 解析 IJKPlayer
 http://www.samirchen.com/ijkplayer/
 
-## ijkplayer 仿SDL
+### ijkplayer 仿SDL
 SDL 1.2 不支持 Android/iOS，而原生 ffplay 用到的接口在 SDL 2.0 里没有。
 ijkplayer 参考 SDL 2.0 的接口，实现了仿SDL的 ijksdl https://github.com/bilibili/ijkplayer/issues/56#issuecomment-50605031
 https://zhuanlan.zhihu.com/p/45237178
 
-## xcode error can't locate file for: -lavfilter; file: -lavfilter is not an object file (not allowed in a library)
+### xcode error can't locate file for: -lavfilter; file: -lavfilter is not an object file (not allowed in a library)
 因为没有配Library Search Paths
 
-## ijkmp_start()=-3
+### ijkmp_start()=-3
 起初msg_loop里没有实现ijkmp_get_msg时，调用ijkmp_start出现此错误
 
-# HDLPlayer 将 ijkplayer 集成进 cocos
+## HDLPlayer 将 ijkplayer 集成进 cocos
 
 创建 _mediaPlayer 时指定我们自己的 SDL_Vout，实现它的 display_overlay 回调函数，参数 overlay 就是帧解码后的数据。 
 ```c
@@ -204,7 +204,7 @@ spriteFrame.texture = texture;
 this.sprite.spriteFrame = spriteFrame;
 ```
 
-# web 端实现
+## web 端实现
 ```ts
 export class HDLPlayer {
     private _video: HTMLVideoElement = document.createElement('video');
@@ -228,7 +228,7 @@ export class HDLPlayer {
 }
 ```
 
-# 其它参考资料
-## 基于 FFmpeg 的 Cocos Creator 视频播放器
+## 其它参考资料
+### 基于 FFmpeg 的 Cocos Creator 视频播放器
 https://oedx.github.io/2020/12/29/FFmpeg-Cocos-Creator/
 

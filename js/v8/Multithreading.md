@@ -79,6 +79,6 @@ https://github.com/v8/v8/blob/main/include/v8-locker.h
  */
 ```
 
-# Web Worker
+## Web Worker
 Web Worker [需要通过序列化对象来与线程交互特定的数据](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers#%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8)，为什么要这样设计？  
 Web Worker 留了一个口子，**SharedArrayBuffer** 被序列化时不会发生拷贝，同时提供了对其的[原子操作](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Atomics)。

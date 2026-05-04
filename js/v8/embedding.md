@@ -1,8 +1,8 @@
-# [How to build V8 on Windows and not go mad](https://medium.com/angular-in-depth/how-to-build-v8-on-windows-and-not-go-mad-6347c69aacd4)
+## [How to build V8 on Windows and not go mad](https://medium.com/angular-in-depth/how-to-build-v8-on-windows-and-not-go-mad-6347c69aacd4)
 
 Clone v8 库，选一个[版本](https://v8.dev/docs/version-numbers) tag 创建分支，然后执行 gclient sync(or gclient sync -D --force --reset) (this will reset related repo to corresponding commit).
 
-## Set proxy if necessary:
+### Set proxy if necessary:
 for CMD
 ```cmd
 set HTTP_PROXY=http://127.0.0.1:58591
@@ -26,7 +26,7 @@ proxy_port=58591
 export NO_AUTH_BOTO_CONFIG=../boto.txt
 ```
 
-## Build
+### Build
 执行 python3 tools/dev/v8gen.py x64.release (确保这里 python3 是 depot_tools 里的), 此命令生成目录 out.gn. 
 ```
 C:\Users\qingwabote\Documents\v8\v8>where python3
@@ -102,7 +102,7 @@ treat_warnings_as_errors=false
 
 最后 ninja -C out.gn/x64.release
 
-## Android
+### Android
 v8 for android 不能在 windows 下构建，这里走 WSL。depot_tools 可以继续用 windows 上的，v8 源码我另起炉灶了，因为 windows 构建 v8 留下的 windows 的文件，不知道如何清理。
 ```
 target_os = "android"
@@ -204,6 +204,6 @@ Please take one of the following actions to install Ninja:
 
 *https://v8.dev/docs/cross-compile-arm*
 
-# console.log 
+## console.log 
 API 存在但是不起作用，据说将来会被移除 [The console API is not removed from the global in this CL,
 but it is planned to be removed in the later release](https://bugs.chromium.org/p/v8/issues/detail?id=11989)

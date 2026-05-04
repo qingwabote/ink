@@ -1,4 +1,4 @@
-# [SWIG](https://www.swig.org/)
+[SWIG](https://www.swig.org/)
 
 ## Module
 每个 Module 包含完整的 runtime, 独立运行，甚至"SWIG modules generated with different versions can peacefully coexist".

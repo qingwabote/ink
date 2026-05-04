@@ -1,4 +1,3 @@
-# 反射方程
 $$
 L_r(p, \omega_r) = \int_{\Omega^+} f_r(p, \omega_r, \omega_i) L_i(p, \omega_i)(n·\omega_i)d\omega_i
 \hspace{100cm}
@@ -21,7 +20,7 @@ for(int i = 0; i < steps; ++i)
 }
 ```
 
-# Cook-Torrance BRDF
+## Cook-Torrance BRDF
 Cook-Torrance BRDF 按比例拆成了漫反射和镜面反射两部分 $k_d + k_s = 1$：
 $$
 f_r = k_df_{d} + k_sf_{s}
@@ -53,7 +52,7 @@ L_i(p,\omega_i) n \cdot \omega_i  d\omega_i
 $$
 漫反射积分通过**漫反射贴图**来解，下面讨论如何解镜面反射积分
 
-# Split Integral Approximation
+## Split Integral Approximation
 <!-- $$
 \int Env(l)BRDF_{env}(l,v,h)cos(\omega)d\omega \hspace{100cm}\\
 \approx \left( 4\int Env(l)D_{env}(h)cos(\omega) d\omega\right)\left(\int BRDF_{env}(l,v,h)cos(\omega) d\omega\right)
@@ -75,7 +74,7 @@ L_i(p,\omega_i) n \cdot \omega_i  d\omega_i \approx \frac{\int_{\Omega} L_i(p,\o
 \hspace{100cm}
 $$
 
-# Environment Specular BRDF
+## Environment Specular BRDF
 *For the diffuse response we used the classic Lambertian BRDF. This talk will be all about 
 the **specular** response. [Getting More Physical in Call of Duty: Black Ops II](https://blog.selfshadow.com/publications/s2013-shading-course/#course_content)*
 
@@ -119,7 +118,7 @@ float3 EnvironmentBRDF( float g, float NoV, float3 rf0 ) {
 }
 ```
 
-# UE
+## UE
 重构 Cook-Torrance Specular BRDF
 $$
 \frac{DFG}{4(n \cdot l)(n \cdot v)} \approx D \frac{1}{(v \cdot n)(v \cdot l)}  FG

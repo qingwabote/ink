@@ -1,4 +1,4 @@
-# Interleaved vertex buffer
+## Interleaved vertex buffer
 ```js
 vertexAttribPointer(index, size, type, normalized, stride, offset)
 ```
@@ -17,7 +17,7 @@ If the VK_KHR_portability_subset extension is enabled, and VkPhysicalDevicePorta
 
 而 gltf 的 offset 超出了 VkPhysicalDeviceLimits::maxVertexInputAttributeOffset 的限制 *<https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#_accessor_byteoffset>*
 
-# 资源绑定
+## 资源绑定
 vertexAttribPointer(index, ...) 将 bufer 绑定到 attribute index(location)
 ```plantuml
 !option handwritten true

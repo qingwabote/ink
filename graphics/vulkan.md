@@ -1,14 +1,14 @@
-# Vulkan loader
+## Vulkan loader
 在 windows 上为 vulkan-1.dll，Vulkan Runtime 说的应该也是它。  
 *[Runtime - Runtime Installer. Installs the Vulkan Loader on your system. Most users do NOT need to install the runtime installer. The preferred method for obtaining the runtime installer is from your IHVs driver package update.](https://vulkan.lunarg.com/sdk/home?fbclid=IwAR3uPe0tJMTAdnaDAELcT-wI44vKlvv1hEfzokwyLIQuOAgOI6D7qh_HjnA)*
 
 通过 vkEnumerateInstanceVersion 查看它的版本。
 
-# Vulkan driver
+## Vulkan driver
 版本在 vkGetPhysicalDeviceProperties 中。  
 *[It is possible that the loader and implementations(aka: driver or physical device) will support different versions.](https://docs.vulkan.org/guide/latest/versions.html#_instance_and_device)*
 
-# Threaded Command Buffer Generation
+## Threaded Command Buffer Generation
 ```plantuml
 !option handwritten true
 
@@ -43,9 +43,9 @@ Thread4 -right-> GPU
 ```
 *<https://developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf>*
 
-# Memory
+## Memory
 
-## Memory Heap
+### Memory Heap
 Dedicated GPU
 ```plantuml
 !option handwritten true
@@ -67,11 +67,11 @@ state "Unified Memory" as UnifiedMemory {
     state "Device Local | Host Visible" as DeviceHost
 }
 ```
-## Vulkan Memory Allocator
+### Vulkan Memory Allocator
 [Recommended usage patterns](https://gpuopen-librariesandsdks.github.io/VulkanMemoryAllocator/html/usage_patterns.html)
 
-# Synchronization
-## Pipeline Barriers
+## Synchronization
+### Pipeline Barriers
 ```plantuml
 !option handwritten true
 object coreA
@@ -89,7 +89,7 @@ coreB <-- cacheB: read from cache
 cacheB <-- memory: invalidate cache,\n make it visible
 ```
 *[Global memory barriers vs buffer/image memory barrier](https://www.reddit.com/r/vulkan/comments/v2mswb/global_memory_barriers_vs_bufferimage_memory/?utm_source=share&utm_medium=web2x&context=3)*
-## Subpass Dependencies
+### Subpass Dependencies
 实际上是 Subpass Stage Dependency, 即上个 Subpass 的某个 Stage 与下个 Subpass 的某个 Stage 的依赖关系  
 *[Subpass Dependencies: What are those and why do I need them?](https://www.reddit.com/r/vulkan/comments/s80reu/subpass_dependencies_what_are_those_and_why_do_i/)*  
 
@@ -99,15 +99,15 @@ cacheB <-- memory: invalidate cache,\n make it visible
 [关于 Vulkan Tutorial 中同步问题的解释](https://zhuanlan.zhihu.com/p/350483554)   
 [draw calls will respect the results of previous draw calls, within the same subpass (between subpasses is governed by explicit subpass dependencies)](https://stackoverflow.com/questions/56849788/synchronization-between-drawcalls-in-vulkan)*
 
-## Memory layout
+### Memory layout
 
-## Image layouts
+### Image layouts
 [Images are stored in implementation-dependent opaque layouts in memory](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-layouts)
 
-## Access scopes 
+### Access scopes 
 https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#synchronization-dependencies-access-scopes
 
-# Cross platform
+## Cross platform
 [Handling differences between Vulkan and OpenGL coordinate system](https://www.khronos.org/news/permalink/handling-differences-between-vulkan-and-opengl-coordinate-system)
 
 [weird problem will cullface](https://forums.developer.nvidia.com/t/weird-problem-will-cullface/41525/4)

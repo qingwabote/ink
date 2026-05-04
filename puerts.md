@@ -1,6 +1,6 @@
 Mono 使用 [平台调用 (P/Invoke)](https://docs.microsoft.com/zh-cn/dotnet/standard/native-interop/pinvoke) 技术与 puerts 交互  
 
-# CS 向 JSEngine 注册类型
+## CS 向 JSEngine 注册类型
 ```plantuml
 !option handwritten true
 
@@ -14,7 +14,7 @@ TypeRegister.cs -> JSEngine.cpp:RegisterProperty
 note right: 注册属性的 getter 和 setter 函数
 ```
 
-# JS 获取已注册的 CS 类型
+## JS 获取已注册的 CS 类型
 ```plantuml
 !option handwritten true
 
@@ -26,7 +26,7 @@ Puerts.cpp -> JSEngine.cpp:GetClassConstructor
 Puerts.cpp -> v8.FunctionCallbackInfo:GetReturnValue().Set
 ```
 
-# BlittableCopy
+## BlittableCopy
 **平台调用**可以帮我们完成一些托管值类型到基本的非托管类型的转换(Marshaling)
 ```cs
         public static extern void ReturnNumber(IntPtr isolate, IntPtr info, double number);

@@ -1,4 +1,4 @@
-# 向量 $\mathbf{v}$ 绕轴 $\mathbf{u}$ 旋转弧度 $θ$
+## 向量 $\mathbf{v}$ 绕轴 $\mathbf{u}$ 旋转弧度 $θ$
 如果把 $\mathbf{v}$ 分解为平行和垂直于 $\mathbf{u}$ 的分向量 $\mathbf{v} = \mathbf{v_∥} + \mathbf{v_⊥}$ 那么
 
 $\mathbf{v^′_⊥} = \cos(θ)\mathbf{v_⊥} + \sin(θ)(\mathbf{u} × \mathbf{v_⊥})$
@@ -17,7 +17,7 @@ $\mathbf{v^′_⊥} = \cos(θ)\mathbf{v_⊥} + \sin(θ)(\mathbf{u} × \mathbf{v_
 
 *[四元数与三维旋转](https://github.com/Krasjet/quaternion)*
 
-# 万向节死锁（Gimbal lock）
+## 万向节死锁（Gimbal lock）
 ```ts
 fromXRotation(radian: number): Mat4 {
     const s = Math.sin(radian);
@@ -61,4 +61,4 @@ fromZRotation(radian: number): Mat4 {
 
 
 
-# 四元数
+## 四元数

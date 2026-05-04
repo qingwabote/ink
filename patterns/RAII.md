@@ -1,4 +1,5 @@
-# [RAII](https://zh.cppreference.com/w/cpp/language/raii)
+[RAII](https://zh.cppreference.com/w/cpp/language/raii)
+
 ## 构造函数中对虚函数的调用(cpp)
 [Avoid virtual method calls in constructors](https://google.github.io/styleguide/cppguide.html#Doing_Work_in_Constructors)
 ## 构造函数中对模板方法的调用(JS)

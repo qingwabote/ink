@@ -28,7 +28,7 @@ Javascript 没有复合类型的值对象，很难实现在内存中连续访问
 ### Unity Entities
 Entities 在 WebGL 下的最大兼容问题在于配套的 Entities Graphics 依赖 Compute Shader, 所以我自己实现了
 Entities 的渲染器 [Graphix](https://github.com/qingwabote/graphix)  
-Entities 与 Addressables 互不兼容，若需要分包加载，参考 [SubScene(Entities)](unity/minigame.md)
+Entities 与 Addressables 互不兼容，若需要分包加载，参考 [Addressables](unity/minigame.md#addressables)
 
 ## Unity 微信小游戏案例
 >[转自《异星幸存者》游戏圈帖子](https://game.weixin.qq.com/cgi-bin/h5/static/circle/detail.html?liteapp=liteapp%3A%2F%2Fwxalite842f9e8076010458697522e7db33761b%3Fpath%3Dpages%252Fdetail%252Findex&wechat_pkgid=circle_detail&tid=hxFdSkCdyG1v6MC79qDvLA#wechat_redirect)
