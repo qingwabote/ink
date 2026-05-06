@@ -1,6 +1,7 @@
 - [Home](/)
 - unity
     - [ECS](unity/ecs.md)
+    - [Graphix](unity/graphix.md)
     - [minigame](unity/minigame.md)
     - [RectTransform](unity/RectTransform.md)
 - cocos
