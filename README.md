@@ -4,16 +4,16 @@
 ## Javascript 的瓶颈
 *为了凸显 CPU 瓶颈，这里只跑了实时 Skinning 的测试*
 
-**Unity 原生**由于 WebGL 不支持 Compute Shader, 它的 Skinning 是纯 CPU 运算，所以性能最差：  
-https://qingwabote.github.io/fishes-pages/skinning-256-unity/  
+**Unity 原生**由于 WebGL 不支持 Compute Shader, 它的 Skinning 是纯 CPU 运算，所以性能最差  
+> https://qingwabote.github.io/fishes-pages/skinning-256-unity/  
 开启 SIMD：  
 https://qingwabote.github.io/fishes-pages/skinning-256-unity-simd/
 
-**Cocos** 针对 WebGL 不支持 Compute Shader 的问题，选择了 Vertex Shader Skinning, 顶点变换在 Vertex Shader 中执行，所以比纯 CPU 运算性能好，缺陷是 Vertex Shader 每个 Pass 都执行一遍，对多 Pass 不友好，而且 Cocos 实时运算不走 GPU Instancing：  
-https://qingwabote.github.io/fishes-pages/skinning-256-cocos/
+**Cocos** 针对 WebGL 不支持 Compute Shader 的问题，选择了 Vertex Shader Skinning, 顶点变换在 Vertex Shader 中执行，所以比纯 CPU 运算性能好，缺陷是 Vertex Shader 每个 Pass 都执行一遍，对多 Pass 不友好，而且 Cocos 实时运算不走 GPU Instancing  
+> https://qingwabote.github.io/fishes-pages/skinning-256-cocos/
 
-**Unity ECS** 下我在 [Graphix](unity/graphix.md) 中实现了 Vertex Shader Skinning, 把性能找补了回来，并且超越了 Cocos：  
-https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs/  
+**Unity ECS** 下我在 [Graphix](unity/graphix.md) 中实现了 Vertex Shader Skinning, 把性能找补了回来，并且超越了 Cocos
+> https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs/  
 开启 SIMD：  
 https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-simd/  
 *因为实现支持 GPU Instancing 这里顺便给出：*  
@@ -57,6 +57,8 @@ FPS 41
 *游戏基于 Unity Entities, 用 [Graphix](unity/graphix.md) 渲染, 使用了 Unity Physics（但敌人之间的避障走 RVO）*
 
 <img src="https://mmgame.qpic.cn/image/95abb1c4bd6c789f35717eb40464e02a2d3f8be8868c4de3915bf09725b69390/0" referrerpolicy="no-referrer">
+
+> [Unity 微信小游戏适配](unity/minigame.md)
 
 ## 如果感兴趣
 qingwabote@126.com
