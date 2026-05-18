@@ -33,3 +33,6 @@ Unity 构建 WebGL 时将所有资源文件打包到 .data 文件中，引擎初
 ### SubScene
 使用 Addressables 加载 Scene 时并没有按预期的处理 SubScene，事实上 Entities 与 Addressables 互不兼容  
 可以在 Addressables 加载 Scene 之前下载 RemoteContentCatalogBuildUtility.BuildContent 产出的 Entities 资源到 /StreamingAssets/, Entities 默认从那里读取
+
+## 更多
+[体积优化](/unity/size-optimization.md)

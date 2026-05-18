@@ -7,6 +7,39 @@ https://docs.unity3d.com/Packages/com.unity.web.stripping-tool@1.3/manual/index.
 IL2CPP Code Generation 设置为 Optimize for code size 会开启 **Full Generic Sharing**
 
 ### Web Platform Settings - Code Optimization - Disk Size with LTO
+LTO 能在 Disk Size 的基础上进一步减少体积
+
+### UI Toolkit
+**UGUI** 检测到 UIElements 包，就会产生引用，即便是运行时，并不像注释所说的 "it can be stripped from a project build if unused".
+```
+"versionDefines": [
+    {
+        "name": "com.unity.modules.uielements",
+        "expression": "1.0.0",
+        "define": "PACKAGE_UITOOLKIT"
+    }
+],
+```
+```c#
+        // This code is disabled unless the com.unity.modules.uielements module is present.
+        // The UIElements module is always present in the Editor but it can be stripped from a project build if unused.
+#if PACKAGE_UITOOLKIT
+        [SerializeField, HideInInspector] private UIToolkitInteroperabilityBridge m_UIToolkitInterop = new ();
+
+        /// <summary>
+        /// Use this property to initialize UI Toolkit interoperability with uGUI events.
+        /// </summary>
+        internal UIToolkitInteroperabilityBridge uiToolkitInterop => m_UIToolkitInterop;
+#endif
+```
+去掉这个对 UIElements 的 versionDefine 即可。
+
+**Input System** 则直接依赖 UIElements. 好在对 UIElements 的代码引用大都在 #if UNITY_EDITOR 下, 处理掉几个特例删掉 dependencies 即可
+```
+  "dependencies": {
+    "com.unity.modules.uielements": "1.0.0"
+  }
+```
 
 ### Entities baking
 Unity 并不会在构建时自动排除 [BakingType], Baker 与 Baking System, 更不会自动排除 Authoring Component. 由于 Authoring Component 是 MonoBehaviour 甚至无法放入 editor 程序集，只能用宏 UNITY_EDITOR 加以排除。官方的 entities 相关 package 在这点上也是混乱的
