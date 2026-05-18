@@ -1,16 +1,31 @@
 **Entities Graphics** 渲染库依赖 WebGL 不支持的 Compute Shader，我模仿它的接口实现了兼容 WebGL 的渲染库并命名为 **Graphix**
 > https://github.com/qingwabote/graphix
 
-## GPU Instancing
-Entities Graphics 使用 **BatchRendererGroup(BRG)** 但 Graphix 选择了 **Graphics.RenderMeshInstanced**, 这只是为了降低开发难度
+## Batching
+Entities Graphics 基于 **BatchRendererGroup(BRG)**
+> [BRG WebGL Demo](https://qingwabote.github.io/fishes-pages/brg-shooter/)
+
+BRG 使用 float3x4 压缩矩阵，节省带宽
+
+Graphix 基于 Graphics.RenderMeshInstanced 依赖 **MaterialPropertyBlock** 上传自定义实例属性。MaterialPropertyBlock 没有提供非托管数组的接口，为了避免从 burst 到托管数组的拷贝，Graphix Pin 了托管数组在 burst 下直接通过指针读写并建了托管数组池循环使用。输出数组时为了解决 MaterialPropertyBlock.SetFloatArray 不能自定义长度的问题，Graphix 借 List 的壳传递数组，hack 了 List 的 size
+
+RenderMeshInstanced 对 worldToObject matrix 的计算成本似乎并不会随着 **assumeuniformscaling** 开启而被省略
+```c
+// Put worldToObject array to a separate CB if UNITY_ASSUME_UNIFORM_SCALING is defined. Most of the time it will not be used.
+#ifdef UNITY_ASSUME_UNIFORM_SCALING
+    #define UNITY_WORLDTOOBJECTARRAY_CB 1
+#else
+    #define UNITY_WORLDTOOBJECTARRAY_CB 0
+#endif
+```
+> com.unity.render-pipelines.core\ShaderLibrary\UnityInstancing.hlsl
+
 
 ## MaterialPropertyAttribute
 Graphix 兼容 MaterialPropertyAttribute
 
 ## EntitiesGraphicsSystem
 Graphix 兼容 EntitiesGraphicsSystem, 用于运行时注册 Material 和 Mesh.
-
-## Batching
 
 ## Scene View Mode
 Entities Graphics 控制是否在 Scene View 中显示的实现原理尚不明确
