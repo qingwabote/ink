@@ -33,6 +33,7 @@ LTO 能在 Disk Size 的基础上进一步减少体积
 #endif
 ```
 去掉这个对 UIElements 的 versionDefine 即可。
+> https://github.com/qingwabote/com.unity.ugui/commit/fc2e293c8a15656d6369f376f301746e38b9ce18
 
 **Input System** 则直接依赖 UIElements. 好在对 UIElements 的代码引用大都在 #if UNITY_EDITOR 下, 处理掉几个特例删掉 dependencies 即可
 ```
@@ -40,6 +41,7 @@ LTO 能在 Disk Size 的基础上进一步减少体积
     "com.unity.modules.uielements": "1.0.0"
   }
 ```
+> https://github.com/qingwabote/com.unity.inputsystem/commit/9c8eee7c83696c9d5d6325d785c61ddcbe21e049
 
 ### Entities baking
 Unity 并不会在构建时自动排除 [BakingType], Baker 与 Baking System, 更不会自动排除 Authoring Component. 由于 Authoring Component 是 MonoBehaviour 甚至无法放入 editor 程序集，只能用宏 UNITY_EDITOR 加以排除。官方的 entities 相关 package 在这点上也是混乱的

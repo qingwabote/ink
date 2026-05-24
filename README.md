@@ -54,7 +54,25 @@ FPS 41
 敌人数量(Enemies) 681
 <img src="https://mmgame.qpic.cn/image/624e92330f7b13bb31f932d034dbb667f92993b2abc8fbd02ffa861b99867a2c/0" referrerpolicy="no-referrer">
 
-*游戏基于 Unity Entities, 用 [Graphix](unity/graphix.md) 渲染, 使用了 Unity Physics（但敌人之间的避障走 RVO）*
+**总包大小：** 19503 KB
+| Path                                      | Size      |
+|-------------------------------------------|-----------:|
+| `/wasmcode/`                              | 5695.6 KB |
+| `/StreamingAssets/aa/WebGL/moon`          | 3050.2 KB |
+| `/StreamingAssets/ContentArchives`        | 2550.1 KB |
+| `/StreamingAssets/aa/WebGL/duplicate`     | 2083.8 KB |
+| `/data-package/`                          | 1892.1 KB |
+| `/StreamingAssets/aa/WebGL/title`         | 1568.7 KB |
+| `/StreamingAssets/EntityScenes`           | 1392.0 KB |
+| `main`                                    | 1270.3 KB |
+
+**系统与实现**
+| System            | Implementation                         |
+|-------------------|----------------------------------------|
+| ECS               | Unity Entities                         |
+| Rendering         | [Graphix](unity/graphix.md)            |
+| Physics           | Unity Physics                          |
+| Crowd Avoidance   | RVO（用于敌人之间的避障）              |
 
 <img src="https://mmgame.qpic.cn/image/95abb1c4bd6c789f35717eb40464e02a2d3f8be8868c4de3915bf09725b69390/0" referrerpolicy="no-referrer">
 
