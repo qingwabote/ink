@@ -1,25 +1,27 @@
 # 小游戏 CPU 性能
-*小游戏指：Javascript/Webassembly + WebGL*
+*小游戏指 Javascript/Webassembly + WebGL*
 
 ## Javascript 的瓶颈
-*为了凸显 CPU 瓶颈，这里只跑了实时 Skinning 的测试*
+*为了凸显 CPU 瓶颈，这里只跑**实时** Skinning 测试*
 
-**Unity 原生**由于 WebGL 不支持 Compute Shader, 它的 Skinning 是纯 CPU 运算，所以性能最差  
-> https://qingwabote.github.io/fishes-pages/skinning-256-unity/  
-开启 SIMD：  
-https://qingwabote.github.io/fishes-pages/skinning-256-unity-simd/
+**Unity 原生**受限于 WebGL 不支持 Compute Shader, 它的 Skinning 是纯 CPU 运算，所以性能最差
+| 版本 | 链接 |
+|------|------|
+| 普通 | https://qingwabote.github.io/fishes-pages/skinning-256-unity/ |
+| SIMD | https://qingwabote.github.io/fishes-pages/skinning-256-unity-simd/ |
 
 **Cocos** 针对 WebGL 不支持 Compute Shader 的问题，选择了 Vertex Shader Skinning, 顶点变换在 Vertex Shader 中执行，所以比纯 CPU 运算性能好，缺陷是 Vertex Shader 每个 Pass 都执行一遍，对多 Pass 不友好，而且 Cocos 实时运算不走 GPU Instancing  
-> https://qingwabote.github.io/fishes-pages/skinning-256-cocos/
+| 版本 | 链接 |
+|------|------|
+| Vertex Shader Skinning | https://qingwabote.github.io/fishes-pages/skinning-256-cocos/ |
 
-**Unity ECS** 下我在 [Graphix](unity/graphix.md) 中实现了 Vertex Shader Skinning, 把性能找补了回来，并且超越了 Cocos
-> https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs/  
-开启 SIMD：  
-https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-simd/  
-*因为实现支持 GPU Instancing 这里顺便给出：*  
-*https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-instanced/*  
-*开启 SIMD：*  
-*https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-instanced-simd/*
+**Unity ECS** 下，我在 [Graphix](unity/graphix.md) 中实现了 Vertex Shader Skinning, 性能高于 Cocos
+| 版本 | 链接 |
+|------|------|
+| Vertex Shader Skinning | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs/ |
+| Vertex Shader Skinning + SIMD | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-simd/ |
+| Vertex Shader Skinning + GPU Instancing | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-instanced/ |
+| Vertex Shader Skinning + GPU Instancing + SIMD | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-instanced-simd/ |
 
 所以性能上 Unity(Webassembly) 优于 Javascript, 而且可以利用 SIMD 进一步提升
 
@@ -31,6 +33,8 @@ Entities 的渲染库 [Graphix](unity/graphix.md)
 Entities 与 Addressables 互不兼容，若需要分包加载，参考 [Addressables](unity/minigame.md#addressables)
 
 ## Unity Minigame Showcase
+[《异星幸存者》](https://game.weixin.qq.com/cgi-bin/h5/static/circle/detail.html?liteapp=liteapp%3A%2F%2Fwxalite842f9e8076010458697522e7db33761b%3Fpath%3Dpages%252Fdetail%252Findex&wechat_pkgid=circle_detail&tid=hxFdSkCdyG1v6MC79qDvLA#wechat_redirect)
+
 <img src="https://mmgame.qpic.cn/image/95abb1c4bd6c789f35717eb40464e02a2d3f8be8868c4de3915bf09725b69390/0" referrerpolicy="no-referrer" width="128">
 
 ### 低端设备微信云测试
@@ -88,17 +92,19 @@ Entities 与 Addressables 互不兼容，若需要分包加载，参考 [Address
 | 小米 8 | 骁龙 845 + Adreno 630 | 2248×1080 | 33 | 673 |
 | vivo Z5 | 骁龙 712 + Adreno 616 | 2340×1080 | 41 | 681 |
 
-#### 总大小 19503 KB
+#### 包体
 | Path                                      | Size      |
 |:------------------------------------------|:----------|
+| `main`                                    | 1270.3 KB |
 | `/wasmcode/`                              | 5695.6 KB |
+| `/data-package/`                          | 1892.1 KB |
+| `/StreamingAssets/aa/WebGL/duplicate`     | 2083.8 KB |
+| `/StreamingAssets/aa/WebGL/title`         | 1568.7 KB |
+| **进入主场景**                             | **12510.5** KB|
 | `/StreamingAssets/aa/WebGL/moon`          | 3050.2 KB |
 | `/StreamingAssets/ContentArchives`        | 2550.1 KB |
-| `/StreamingAssets/aa/WebGL/duplicate`     | 2083.8 KB |
-| `/data-package/`                          | 1892.1 KB |
-| `/StreamingAssets/aa/WebGL/title`         | 1568.7 KB |
 | `/StreamingAssets/EntityScenes`           | 1392.0 KB |
-| `main`                                    | 1270.3 KB |
+| **总计**                                  | **19503.5** KB|
 
 #### 系统与实现
 | System            | Implementation                         |
@@ -112,6 +118,6 @@ Entities 与 Addressables 互不兼容，若需要分包加载，参考 [Address
 > [Unity 微信小游戏适配](unity/minigame.md)
 
 ## 如果感兴趣
-qingwabote@126.com
+📮qingwabote@126.com
 
 *本人正在寻找工作机会坐标**北京***
