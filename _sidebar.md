@@ -2,7 +2,8 @@
 - unity
     - [ECS](unity/ecs.md)
     - [Graphix](unity/graphix.md)
-    - [minigame](unity/minigame.md)
+    - [Minigame](unity/minigame.md)
+    - [Minigame API](unity/flavor.md)
     - [体积优化](unity/size-optimization.md)
 - cocos
     - [3D 与 2D](cocos/2D3D.md)

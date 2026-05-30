@@ -30,33 +30,67 @@ Entities 在 WebGL 下的最大兼容问题在于配套的 Entities Graphics 依
 Entities 的渲染库 [Graphix](unity/graphix.md)  
 Entities 与 Addressables 互不兼容，若需要分包加载，参考 [Addressables](unity/minigame.md#addressables)
 
-## Unity 微信小游戏案例
->[转自《异星幸存者》游戏圈帖子](https://game.weixin.qq.com/cgi-bin/h5/static/circle/detail.html?liteapp=liteapp%3A%2F%2Fwxalite842f9e8076010458697522e7db33761b%3Fpath%3Dpages%252Fdetail%252Findex&wechat_pkgid=circle_detail&tid=hxFdSkCdyG1v6MC79qDvLA#wechat_redirect)
+## Unity Minigame Showcase
+<img src="https://mmgame.qpic.cn/image/95abb1c4bd6c789f35717eb40464e02a2d3f8be8868c4de3915bf09725b69390/0" referrerpolicy="no-referrer" width="128">
 
-iPhone XR 1792x828, A12 Bionic  
-FPS 60  
-敌人数量(Enemies) 670
+### 低端设备微信云测试
+
+> 测试场景：敌人数量达到约 670 时低端设备的表现
+
+#### iPhone XR
+- 分辨率：1792 × 828
+- SoC：A12 Bionic
+- FPS：60
+- 敌人数量：670
+
 <img src="https://mmgame.qpic.cn/image/5207e3b83bfd35036db51e04fb9c272f6a2dc43ac872f876437c242e01122470/0" referrerpolicy="no-referrer">
-> 截图来自微信云测试。
 
-iPhone SE 2 1334x750, A13 Bionic  
-FPS 60  
-敌人数量(Enemies) 661
+---
+
+#### iPhone SE (第 2 代)
+- 分辨率：1334 × 750
+- SoC：A13 Bionic
+- FPS：60
+- 敌人数量：661
+
 <img src="https://mmgame.qpic.cn/image/26d96348c1b75ebf740695f7c28f093db948ff0b69101bb3264c977735e25acd/0" referrerpolicy="no-referrer">
 
-小米8 2248x1080, 骁龙 845, Adreno (TM) 630  
-FPS 33  
-敌人数量(Enemies) 673
+---
+
+#### 小米 8
+- 分辨率：2248 × 1080
+- SoC：骁龙 845
+- GPU：Adreno 630
+- FPS：33
+- 敌人数量：673
+
 <img src="https://mmgame.qpic.cn/image/349b62178cd59e6e4551a0f5696edbcaeb279aec4a5b5ec9779507c81d05abef/0" referrerpolicy="no-referrer">
 
-vivo Z5 2340x1080, 骁龙712, Adreno (TM) 616  
-FPS 41  
-敌人数量(Enemies) 681
+---
+
+#### vivo Z5
+- 分辨率：2340 × 1080
+- SoC：骁龙 712
+- GPU：Adreno 616
+- FPS：41
+- 敌人数量：681
+
 <img src="https://mmgame.qpic.cn/image/624e92330f7b13bb31f932d034dbb667f92993b2abc8fbd02ffa861b99867a2c/0" referrerpolicy="no-referrer">
 
-**总包大小：** 19503 KB
+---
+
+#### 测试结果汇总
+
+| 低端设备 | SoC | 分辨率 | FPS | 敌人数量 |
+|--------|--------|--------|--------:|--------:|
+| iPhone XR | A12 Bionic | 1792×828 | 60 | 670 |
+| iPhone SE 2 | A13 Bionic | 1334×750 | 60 | 661 |
+| 小米 8 | 骁龙 845 + Adreno 630 | 2248×1080 | 33 | 673 |
+| vivo Z5 | 骁龙 712 + Adreno 616 | 2340×1080 | 41 | 681 |
+
+#### 总大小 19503 KB
 | Path                                      | Size      |
-|-------------------------------------------|-----------:|
+|:------------------------------------------|:----------|
 | `/wasmcode/`                              | 5695.6 KB |
 | `/StreamingAssets/aa/WebGL/moon`          | 3050.2 KB |
 | `/StreamingAssets/ContentArchives`        | 2550.1 KB |
@@ -66,15 +100,14 @@ FPS 41
 | `/StreamingAssets/EntityScenes`           | 1392.0 KB |
 | `main`                                    | 1270.3 KB |
 
-**系统与实现**
+#### 系统与实现
 | System            | Implementation                         |
-|-------------------|----------------------------------------|
+|:------------------|:---------------------------------------|
 | ECS               | Unity Entities                         |
 | Rendering         | [Graphix](unity/graphix.md)            |
 | Physics           | Unity Physics                          |
-| Crowd Avoidance   | RVO（用于敌人之间的避障）              |
-
-<img src="https://mmgame.qpic.cn/image/95abb1c4bd6c789f35717eb40464e02a2d3f8be8868c4de3915bf09725b69390/0" referrerpolicy="no-referrer">
+| Crowd Avoidance   | RVO（用于敌人之间的避障）                |
+| Platform          | [Flavor](unity/flavor.md)              |
 
 > [Unity 微信小游戏适配](unity/minigame.md)
 

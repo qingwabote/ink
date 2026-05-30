@@ -24,7 +24,7 @@ var calledRun;
 Unity 构建 WebGL 时将所有资源文件打包到 .data 文件中，引擎初始化解包时重新构建 Emscripten 内存文件系统(MEMFS), AssetBundle 不包含在其中，那么读取本地的 AssetBundle 就成了问题
 
 ### File System
-参考 MEMFS 实现一个 [MinigameFS](https://github.com/qingwabote/flavor/blob/main/core/fs.jspre) 挂载到 Emscripten 虚拟文件系统(VFS) 的 /StreamingAssets/ 下，把小游戏[原生文件系统](https://github.com/qingwabote/flavor/blob/main/wx/fs_op.jspre)集成到 VFS
+> [File System](/unity/flavor.md#file-system)
 
 ### AssetBundleProvider
 可以通过自定义 [AssetBundleProvider](https://github.com/qingwabote/flavor/blob/main/core/AssetBundleProvider.cs) 把 AssetBundle 与小游戏分包结合起来
