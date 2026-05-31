@@ -3,7 +3,7 @@
 
 ## Batching
 Entities Graphics 基于 **BatchRendererGroup(BRG)**
-> [BRG WebGL Demo](https://qingwabote.github.io/fishes-pages/brg-shooter/)
+> [BRG WebGL Demo](https://displaying.pages.dev/brg-shooter/)
 
 BRG 使用 float3x4 压缩矩阵，节省带宽
 

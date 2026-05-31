@@ -7,21 +7,21 @@
 **Unity 原生**受限于 WebGL 不支持 Compute Shader, 它的 Skinning 是纯 CPU 运算，所以性能最差
 | 版本 | 链接 |
 |------|------|
-| 普通 | https://qingwabote.github.io/fishes-pages/skinning-256-unity/ |
-| SIMD | https://qingwabote.github.io/fishes-pages/skinning-256-unity-simd/ |
+| 普通 | https://displaying.pages.dev/skinning-256-unity/ |
+| SIMD | https://displaying.pages.dev/skinning-256-unity-simd/ |
 
 **Cocos** 针对 WebGL 不支持 Compute Shader 的问题，选择了 Vertex Shader Skinning, 顶点变换在 Vertex Shader 中执行，所以比纯 CPU 运算性能好，缺陷是 Vertex Shader 每个 Pass 都执行一遍，对多 Pass 不友好，而且 Cocos 实时运算不走 GPU Instancing  
 | 版本 | 链接 |
 |------|------|
-| Vertex Shader Skinning | https://qingwabote.github.io/fishes-pages/skinning-256-cocos/ |
+| Vertex Shader Skinning | https://displaying.pages.dev/skinning-256-cocos/ |
 
 **Unity ECS** 下，我在 [Graphix](unity/graphix.md) 中实现了 Vertex Shader Skinning, 性能高于 Cocos
 | 版本 | 链接 |
 |------|------|
-| Vertex Shader Skinning | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs/ |
-| Vertex Shader Skinning + SIMD | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-simd/ |
-| Vertex Shader Skinning + GPU Instancing | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-instanced/ |
-| Vertex Shader Skinning + GPU Instancing + SIMD | https://qingwabote.github.io/fishes-pages/skinning-256-unity-ecs-instanced-simd/ |
+| Vertex Shader Skinning | https://displaying.pages.dev/skinning-256-unity-ecs/ |
+| Vertex Shader Skinning + SIMD | https://displaying.pages.dev/skinning-256-unity-ecs-simd/ |
+| Vertex Shader Skinning + GPU Instancing | https://displaying.pages.dev/skinning-256-unity-ecs-instanced/ |
+| Vertex Shader Skinning + GPU Instancing + SIMD | https://displaying.pages.dev/skinning-256-unity-ecs-instanced-simd/ |
 
 所以性能上 Unity(Webassembly) 优于 Javascript, 而且可以利用 SIMD 进一步提升
 
