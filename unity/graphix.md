@@ -1,6 +1,14 @@
 **Entities Graphics** 渲染库依赖 WebGL 不支持的 Compute Shader，我模仿它的接口实现了兼容 WebGL 的渲染库并命名为 **Graphix**
 > https://github.com/qingwabote/graphix
 
+## Skinning
+顶点变换在 Vertex Shader 中执行，同时支持 GPU Instancing 和烘焙
+| 版本 | 链接 |
+|------|------|
+| 实时 | https://displaying.pages.dev/skinning-256-unity-ecs-instanced/ |
+| 实时 + SIMD | https://displaying.pages.dev/skinning-256-unity-ecs-instanced-simd/ |
+| 烘焙 | https://displaying.pages.dev/skinning-256-unity-ecs-instanced-baked/ |
+
 ## Batching
 Entities Graphics 基于 **BatchRendererGroup(BRG)**
 > [BRG WebGL Demo](https://displaying.pages.dev/brg-shooter/)
