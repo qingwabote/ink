@@ -1,5 +1,7 @@
 ## Unity 6
-适配新版本的 Emscripten
+
+### WXSDK
+安装 WXSDK 后，原生 Web 构建失败，需手动加 webGLEmscriptenArgs: -s ERROR_ON_UNDEFINED_SYMBOLS=0
 
 ### Webassembly 2023
 随着 WebAssembly.Table 的开启，DYNCALLS 被关闭了，微信和抖音的 JS 库仍然使用旧的 dynCall_viii
@@ -27,7 +29,7 @@ Unity 构建 WebGL 时将所有资源文件打包到 .data 文件中，引擎初
 > [File System](/unity/flavor.md#file-system)
 
 ### AssetBundleProvider
-可以通过自定义 [AssetBundleProvider](https://github.com/qingwabote/flavor/blob/main/core/AssetBundleProvider.cs) 把 AssetBundle 与小游戏分包结合起来
+可以通过自定义 [AssetBundleProvider](https://github.com/qingwabote/flavor/blob/main/core/AA/AssetBundleProvider.cs) 把 AssetBundle 与小游戏分包结合起来
 > [子包更新机制](/js/minigame.md#子包更新机制)
 
 ### SubScene
