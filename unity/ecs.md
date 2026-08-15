@@ -22,7 +22,9 @@ OOP 模板方法的本质是父类事先定义好函数的输入输出与执行�
 ### Baker
 仅为当前 GameObject 关联的 Entity 添加 Component，否则使用 **BakingSystem**
 ### BakingSystem
-但是 Child 仅存在于运行时（由 ParentSystem 维护）
+Child 仅存在于运行时（由 ParentSystem 维护）
+
+为了避免实例化 prefab 时添加 Parent 组件引起结构变化，我会在 Baker 中预添加 Parent 组件，但前提是被迫使用 TransformUsageFlags.ManualOverride, 否则 prefab 的 Parent 会被 TransformBakingSystem 移除
 
 按理说 Baker 与 BakingSystem 是 Editor Only 的，但未见将它们放入 Editor 文件夹下的案例
 

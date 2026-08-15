@@ -30,7 +30,7 @@ _[CMD](https://github.com/cmdjs/specification/blob/master/draft/module.md)_
 ## WebGL2
 WebGL2 在微信[基础款版本](https://developers.weixin.qq.com/minigame/dev/guide/runtime/client-lib/version.html) 2.24.0 中提供了支持
 
-[高性能模式](https://developers.weixin.qq.com/minigame/dev/guide/performance/perf-high-performance.html)在 [Safari iOS15](https://caniuse.com/webgl2) 中提供了 WebGL2 支持，猜测高性能模式跑在 WKWebView 中(为了使用 JIT) 
+[高性能模式](https://developers.weixin.qq.com/minigame/dev/guide/performance/perf-high-performance.html)在 [Safari iOS15](https://caniuse.com/webgl2) 中提供了 WebGL2 支持，猜测高性能模式跑在 WKWebView 中(为了使用 JIT)
 
 [高性能+模式](https://developers.weixin.qq.com/minigame/dev/guide/performance/perf-high-performance-plus.html) [将原本的高性能框架中的webGL渲染，通过跨进程通讯技术，交由了微信客户端的原生渲染实现](http://www.gamelook.com.cn/2024/01/536242)，iOS 版本降到 14, 基础库版本 3.3.2. 跨进程通讯产生的带宽会大大增加场景加载的时间，期间 [XHR 次数(文档没有解释什么是 XHR)](https://gitee.com/wechat-minigame/minigame-unity-webgl-transform/blob/main/Design/PowerPerf-iOS.md) 会飙升到上千
 > [XMLHttpRequest?](https://emscripten.org/docs/site/glossary.html#term-XHR)
