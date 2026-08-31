@@ -1,6 +1,6 @@
 把一个向量从一个空间变换到另一个空间后，这个向量还是从前的那个向量吗？
 
-“任何向量都是**基向量**的线性组合”，现在以基向量 $ij$ [张成的](https://charlesliuyx.github.io/2017/10/06/【直观详解】线性代数的本质/)二维空间举例，我们把向量 $v$ 定义为 $v_x i + v_y j$ ，在这种定义下我们通常所说的 $v = \begin{bmatrix} v_x \\ v_y\end{bmatrix}$ 处于以基向量 $i = \begin{bmatrix} 1 \\ 0\end{bmatrix}$，$j = \begin{bmatrix} 0 \\ 1\end{bmatrix}$ 张成的空间中，即 $v = v_x \begin{bmatrix} 1 \\ 0\end{bmatrix} + v_y \begin{bmatrix} 0 \\ 1\end{bmatrix} = \begin{bmatrix} v_x \\ v_y\end{bmatrix}$
+**任何向量都是基向量的线性组合**，现在以基向量 $ij$ [张成的](https://charlesliuyx.github.io/2017/10/06/【直观详解】线性代数的本质/)二维空间举例，我们把向量 $v$ 定义为 $v_x i + v_y j$ ，在这种定义下我们通常所说的 $v = \begin{bmatrix} v_x \\ v_y\end{bmatrix}$ 处于以基向量 $i = \begin{bmatrix} 1 \\ 0\end{bmatrix}$，$j = \begin{bmatrix} 0 \\ 1\end{bmatrix}$ 张成的空间中（基向量长度为1且正交），即 $v = v_x \begin{bmatrix} 1 \\ 0\end{bmatrix} + v_y \begin{bmatrix} 0 \\ 1\end{bmatrix} = \begin{bmatrix} v_x \\ v_y\end{bmatrix}$
 
 ## 向量与矩阵的乘法
 推广到一般情况，向量 $v$ 在 $i = \begin{bmatrix} i_x \\ i_y\end{bmatrix}$，$j = \begin{bmatrix} j_x \\ j_y\end{bmatrix}$ 张成的空间下的映射 $v^{\prime}$ 为 
@@ -13,10 +13,10 @@ $v^{\prime} = v_x \begin{bmatrix} i_x \\ i_y\end{bmatrix} + v_y \begin{bmatrix} 
 
 $v^{\prime} = v \begin{bmatrix} i_x & j_x\\i_y & j_y\end{bmatrix} = \begin{bmatrix} v_x i_x + v_y j_x \\ v_x i_y + v_y j_y\end{bmatrix}$ 
 
-如此我们就定义了向量与矩阵的乘法运算
+如此我们就定义了向量与矩阵的乘法
 
 ## 矩阵与矩阵的乘法
-第二遍，“任何向量都是**基向量**的线性组合”，基向量也是向量, 把基向量 $ij$ 转换到基向量 $mn$ 张成的空间下
+**任何向量都是基向量的线性组合**，基向量也是向量, 把基向量 $ij$ 转换到基向量 $mn$ 张成的空间下
 
 $i' = i_x m + i_y n$
 
@@ -40,7 +40,7 @@ $v^{\prime} = v \begin{bmatrix} i \quad j \end{bmatrix} = \begin{bmatrix} v_x \\
 如此我们又定义了向量与向量的乘法（点积），由于这是将向量做一维变换，其结果是投影也就不奇怪了
 
 ## 平移
-重要的事情说三遍，“任何向量都是**基向量**的线性组合”。如果给这个组合加个 offset
+**任何向量都是基向量的线性组合**。如果给这个组合加个 offset
 
 即 $v_x i + v_y j + t$ 然后和谐一下  $v_x i + v_y j + v_w t$
 
