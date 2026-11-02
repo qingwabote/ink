@@ -15,7 +15,7 @@ OOP 模板方法的本质是父类事先定义好函数的输入输出与执行�
 ### 静态多态
 更简洁的办法是不走 ECS，走 burst, 走泛型，即静态多态
 ### 重写
-要重写处理组件 A 的原有 system，最直接的做法是新添一个组件 B 然后修改原 system 的查询，加上 WithNone<组件B>()。如果不修改原 system, 可以使用 **WriteGroup** 这个“语法糖”，但仍要求原查询中组件 A **可写**且开启 **FilterWriteGroup**
+要重写处理组件 A 的原有 system，最直接的做法是新添一个组件 B 然后修改原 system 的查询，加上 WithNone<组件B>()。如果不修改原 system, 可以使用 **WriteGroup** 这个“语法糖”，但要求原查询中组件 A **可写**且开启 **FilterWriteGroup**
 
 ## Baking
 然而 ECS 没有独立的编辑器，为了帮助你将 Unity 编辑器中的 **GameObject** 转化成 **Entity**，于是 Unity 引入了一个新系统
